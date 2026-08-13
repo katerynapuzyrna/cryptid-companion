@@ -75,7 +75,7 @@ Run locally: `tools\pre_push_check.bat` or see [Testing](#testing) below.
 
 - **Language:** Python 3.11+
 - **Desktop UI:** PySide6 (Qt 6), Qt Designer `.ui` files, QSS stylesheets
-- **Logic / maps:** NumPy-based rules engine, JSON map data
+- **Logic / maps:** NumPy and SciPy rules engine, JSON map data
 - **Packaging:** PyInstaller (Windows executable)
 
 ---
@@ -231,7 +231,7 @@ Pre-push (all of the above): `tools\pre_push_check.bat`
 |-------|--------|--------|
 | **v0.1** | Done | Public repo, README, LICENSE, reproducible dev setup |
 | **v0.2** | Done | pytest suite, integration tests, GitHub Actions CI, architecture docs |
-| **v0.3** | In progress | GitHub Releases with `.exe`, publishing guide, custom maps template |
+| **v0.3** | Done | GitHub Releases with `.exe`, publishing guide, custom maps template |
 | **v0.4+** | Planned | Manual QA checklist, ML module, online play |
 
 See [CHANGELOG.md](CHANGELOG.md) and [docs/PUBLISHING.md](docs/PUBLISHING.md).
