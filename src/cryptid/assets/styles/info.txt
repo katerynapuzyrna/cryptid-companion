@@ -1,0 +1,16 @@
+theme.py (in cryptid/)	Shared colors, radii, pens for code + QSS consistency
+base.qss	QWidget, QLabel
+cards.qss	Card containers
+home.qss	Home page intro / nav cards / about
+tutorials.qss	Tutorials page section / component cards
+buttons.qss	QPushButton (neutral and primary)
+map_source.qss	mapSourceSegment, btnMapBuild, btnMapSelect; mapsLibSegment, btnMapsLibCreate/Predefined/Custom
+combobox.qss, combo_popup.qss QComboBox and dropdown styling
+board.qss	QGraphicsView
+toggle.qss	toggle
+sidebar.qss	sidebarFrame, navList
+map_card.qss	mapCard, mapCardName, mapCard selected state
+status_list.qss	statusList
+table.qss	
+scroll_area.qss	QScrollArea, mainScroll
+tooltip.qss	HoverTooltipManager tooltip (QFrame#roundedTooltip)

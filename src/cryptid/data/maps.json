@@ -1,0 +1,2705 @@
+{
+    "version": 1,
+    "maps": [
+      {
+        "id": 1,
+        "name": "Atlantis",
+        "advancedMode": false,
+  
+        "grid3x2": [
+          ["4",  "1"],
+          ["6",  "2t"],
+          ["5t", "3t"]
+        ],
+  
+        "structures": [
+          {
+            "tileId": "4",
+            "placements": [
+              { "color": "green", "shape": "triangle", "q": 1, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "6",
+            "placements": [
+              { "color": "blue", "shape": "octagon", "q": 2, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "2t",
+            "placements": [
+              { "color": "green", "shape": "octagon", "q": 2, "r": 2 }
+            ]
+          },
+          {
+            "tileId": "5t",
+            "placements": [
+              { "color": "blue", "shape": "triangle", "q": 1, "r": 2 },
+              { "color": "white", "shape": "octagon", "q": 0, "r": 4 }
+            ]
+          },
+          {
+            "tileId": "3t",
+            "placements": [
+              { "color": "white", "shape": "triangle", "q": 0, "r": 0 }
+            ]
+          }
+        ],
+  
+        "books": {
+          "3": { "alpha": 1,  "beta": 62, "gamma": null, "delta": null, "epsilon": 21, "hint": 55 },
+          "4": { "alpha": 72, "beta": 17, "gamma": 54,   "delta": null, "epsilon": 28, "hint": 27 },
+          "5": { "alpha": 56, "beta": 79, "gamma": 44,   "delta": 74,   "epsilon": 9,  "hint": 76 }
+        }
+      },
+  
+      {
+        "id": 2,
+        "name": "Terra Incognita",
+        "advancedMode": false,
+  
+        "grid3x2": [
+          ["3",  "4t"],
+          ["1t", "2"],
+          ["5t", "6t"]
+        ],
+  
+        "structures": [
+          {
+            "tileId": "4t",
+            "placements": [
+              { "color": "green", "shape": "triangle", "q": 2, "r": 0 },
+              { "color": "blue",  "shape": "octagon",  "q": 0, "r": 2 },
+              { "color": "green", "shape": "octagon",  "q": 1, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "2",
+            "placements": [
+              { "color": "blue",  "shape": "triangle", "q": 0, "r": 0 },
+              { "color": "white", "shape": "octagon",  "q": 2, "r": 1 }
+            ]
+          },
+          {
+            "tileId": "6t",
+            "placements": [
+              { "color": "white", "shape": "triangle", "q": 1, "r": 3 }
+            ]
+          }
+        ],
+  
+        "books": {
+          "3": { "alpha": 2,  "beta": 79, "gamma": null, "delta": null, "epsilon": 28, "hint": 37 },
+          "4": { "alpha": 84, "beta": 1,  "gamma": 6,    "delta": null, "epsilon": 67, "hint": 14 },
+          "5": { "alpha": 66, "beta": 71, "gamma": 68,   "delta": 73,   "epsilon": 29, "hint": null }
+        }
+      },
+
+      {
+        "id": 3,
+        "name": "Blackwater Expanse",
+        "advancedMode": true,
+  
+        "grid3x2": [
+          ["4",  "2t"],
+          ["1t",  "3"],
+          ["5t", "6t"]
+        ],
+  
+        "structures": [
+          {
+            "tileId": "2t",
+            "placements": [
+              { "color": "green", "shape": "triangle", "q": 1, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "1t",
+            "placements": [
+              { "color": "black", "shape": "octagon", "q": 1, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "5t",
+            "placements": [
+              { "color": "black", "shape": "triangle", "q": 1, "r": 0 },
+              { "color": "white", "shape": "triangle", "q": 1, "r": 1 }
+            ]
+          },
+          {
+            "tileId": "6t",
+            "placements": [
+              { "color": "white", "shape": "octagon", "q": 1, "r": 4 }
+            ]
+          },
+          {
+            "tileId": "3",
+            "placements": [
+              { "color": "blue", "shape": "triangle", "q": 1, "r": 1 },
+              { "color": "blue", "shape": "octagon", "q": 1, "r": 3 },
+              { "color": "green", "shape": "octagon", "q": 2, "r": 5 }
+            ]
+          }
+        ],
+  
+        "books": {
+          "3": { "alpha": 36,  "beta": null, "gamma": 62, "delta": 92, "epsilon": null, "hint": 77 },
+          "4": { "alpha": 71, "beta": 35, "gamma": 2,   "delta": null, "epsilon": 75, "hint": 27 },
+          "5": { "alpha": 5, "beta": 49, "gamma": 53,   "delta": 91,   "epsilon": 57,  "hint": 72 }
+        }
+      },
+      {
+        "id": 4,
+        "name": "Whispering Marsh",
+        "advancedMode": false,
+  
+        "grid3x2": [
+          ["3t",  "1t"],
+          ["2t",  "6"],
+          ["4", "5"]
+        ],
+  
+        "structures": [
+          {
+            "tileId": "1t",
+            "placements": [
+              { "color": "blue", "shape": "triangle", "q": 2, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "2t",
+            "placements": [
+              { "color": "green", "shape": "octagon", "q": 2, "r": 0 },
+              { "color": "green", "shape": "triangle", "q": 0, "r": 4 },
+              { "color": "white", "shape": "triangle", "q": 2, "r": 1 }
+            ]
+          },
+          {
+            "tileId": "5",
+            "placements": [
+              { "color": "blue", "shape": "octagon", "q": 0, "r": 2 },
+              { "color": "white", "shape": "octagon", "q": 2, "r": 2 }
+            ]
+          }
+        ],
+  
+        "books": {
+          "3": { "alpha": null,  "beta": 17, "gamma": 35, "delta": null, "epsilon": 76, "hint": 1 },
+          "4": { "alpha": 13, "beta": null, "gamma": 54,   "delta": 27, "epsilon": 45, "hint": 24 },
+          "5": { "alpha": 80, "beta": 6, "gamma": 80,   "delta": 83,   "epsilon": 52,  "hint": 77 }
+        }
+      },
+      {
+        "id": 5,
+        "name": "Ravenstone Vale",
+        "advancedMode": false,
+  
+        "grid3x2": [
+          ["6",  "3"],
+          ["5t",  "4"],
+          ["2", "1t"]
+        ],
+  
+        "structures": [
+          {
+            "tileId": "6",
+            "placements": [
+              { "color": "blue", "shape": "triangle", "q": 2, "r": 0 }
+            ]
+          },
+          {
+            "tileId": "3",
+            "placements": [
+              { "color": "white", "shape": "triangle", "q": 2, "r": 4 }
+            ]
+          },
+          {
+            "tileId": "5t",
+            "placements": [
+              { "color": "green", "shape": "triangle", "q": 0, "r": 4 }
+            ]
+          },
+          {
+            "tileId": "4",
+            "placements": [
+              { "color": "green", "shape": "octagon", "q": 2, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "2",
+            "placements": [
+              { "color": "white", "shape": "octagon", "q": 1, "r": 1 }
+            ]
+          },
+          {
+            "tileId": "1t",
+            "placements": [
+              { "color": "blue", "shape": "octagon", "q": 0, "r": 1 }
+            ]
+          }
+        ],
+  
+        "books": {
+          "3": { "alpha": 55,  "beta": null, "gamma": null, "delta": 52, "epsilon": 45, "hint": 28 },
+          "4": { "alpha": 29, "beta": 65, "gamma": null,   "delta": 2, "epsilon": 38, "hint": 44 },
+          "5": { "alpha": 66, "beta": 35, "gamma": 94,   "delta": 19,   "epsilon": 92,  "hint": 54 }
+        }
+      },
+      {
+        "id": 6,
+        "name": "Emberfall Basin",
+        "advancedMode": false,
+  
+        "grid3x2": [
+          ["4",  "3"],
+          ["6",  "5t"],
+          ["1t", "2t"]
+        ],
+  
+        "structures": [
+          {
+            "tileId": "6",
+            "placements": [
+              { "color": "blue", "shape": "triangle", "q": 0, "r": 1 },
+              { "color": "blue", "shape": "octagon", "q": 2, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "5t",
+            "placements": [
+              { "color": "white", "shape": "octagon", "q": 1, "r": 0 }
+            ]
+          },
+          {
+            "tileId": "1t",
+            "placements": [
+              { "color": "green", "shape": "triangle", "q": 1, "r": 4 },
+              { "color": "green", "shape": "octagon", "q": 0, "r": 4 }
+            ]
+          },
+          {
+            "tileId": "2t",
+            "placements": [
+              { "color": "white", "shape": "triangle", "q": 1, "r": 0 }
+            ]
+          }
+        ],
+  
+        "books": {
+          "3": { "alpha": 69,  "beta": null, "gamma": 31, "delta": 72, "epsilon": null, "hint": 74 },
+          "4": { "alpha": 69, "beta": 2, "gamma": 80,   "delta": null, "epsilon": 57, "hint": 15 },
+          "5": { "alpha": 3, "beta": 80, "gamma": 20,   "delta": 84,   "epsilon": 16,  "hint": 1 }
+        }
+      },
+      {
+        "id": 7,
+        "name": "Frostveil Highlands",
+        "advancedMode": false,
+      
+        "grid3x2": [
+          ["2",  "6t"],
+          ["1",  "4t"],
+          ["3t", "5t"]
+        ],
+      
+        "structures": [
+          {
+            "tileId": "6t",
+            "placements": [
+              { "color": "white", "shape": "octagon", "q": 1, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "4t",
+            "placements": [
+              { "color": "blue", "shape": "octagon", "q": 0, "r": 4 },
+              { "color": "white", "shape": "triangle", "q": 2, "r": 3 }
+            ]
+          },
+          {
+            "tileId": "3t",
+            "placements": [
+              { "color": "green", "shape": "octagon", "q": 1, "r": 2 }
+            ]
+          },
+          {
+            "tileId": "5t",
+            "placements": [
+              { "color": "blue", "shape": "triangle", "q": 2, "r": 3 },
+              { "color": "green", "shape": "triangle", "q": 2, "r": 1 }
+            ]
+          }
+        ],
+      
+        "books": {
+          "3": { "alpha": 30,  "beta": 45, "gamma": null, "delta": 56, "epsilon": null, "hint": 42 },
+          "4": { "alpha": 28, "beta": 76, "gamma": 20,   "delta": 77, "epsilon": null, "hint": 38 },
+          "5": { "alpha": 26, "beta": 71, "gamma": 31,   "delta": 46,   "epsilon": 86,  "hint": 40 }
+        }
+      },
+      {
+        "id": 8,
+        "name": "Verdant Hollow",
+        "advancedMode": false,
+      
+        "grid3x2": [
+          ["6",  "1"],
+          ["5t",  "4"],
+          ["3t", "2"]
+        ],
+      
+        "structures": [
+          {
+            "tileId": "6",
+            "placements": [
+              { "color": "blue", "shape": "triangle", "q": 1, "r": 4 },
+              { "color": "green", "shape": "triangle", "q": 2, "r": 5 },
+              { "color": "white", "shape": "triangle", "q": 1, "r": 0 }
+            ]
+          },
+          {
+            "tileId": "5t",
+            "placements": [
+              { "color": "green", "shape": "octagon", "q": 1, "r": 0 }
+            ]
+          },
+          {
+            "tileId": "4",
+            "placements": [
+              { "color": "blue", "shape": "octagon", "q": 0, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "2",
+            "placements": [
+              { "color": "white", "shape": "octagon", "q": 0, "r": 0 }
+            ]
+          }
+        ],
+      
+        "books": {
+          "3": { "alpha": 42,  "beta": null, "gamma": null, "delta": 13, "epsilon": 2, "hint": 30 },
+          "4": { "alpha": 12, "beta": 92, "gamma": null,   "delta": 26, "epsilon": 28, "hint": 48 },
+          "5": { "alpha": 95, "beta": 64, "gamma": 63,   "delta": 11,   "epsilon": 67,  "hint": 4 }
+        }
+      },
+      {
+        "id": 9,
+        "name": "Obsidian Reach",
+        "advancedMode": false,
+      
+        "grid3x2": [
+          ["6",  "1t"],
+          ["3",  "5"],
+          ["2t", "4"]
+        ],
+      
+        "structures": [
+          {
+            "tileId": "1t",
+            "placements": [
+              { "color": "green", "shape": "octagon", "q": 2, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "3",
+            "placements": [
+              { "color": "white", "shape": "triangle", "q": 2, "r": 2 },
+              { "color": "blue", "shape": "octagon", "q": 1, "r": 5 },
+              { "color": "green", "shape": "triangle", "q": 2, "r": 5 }
+            ]
+          },
+          {
+            "tileId": "5",
+            "placements": [
+              { "color": "blue", "shape": "triangle", "q": 1, "r": 2 },
+              { "color": "white", "shape": "octagon", "q": 2, "r": 4 }
+            ]
+          }
+        ],
+      
+        "books": {
+          "3": { "alpha": 61,  "beta": null, "gamma": null, "delta": 49, "epsilon": 21, "hint": 20 },
+          "4": { "alpha": 2, "beta": 71, "gamma": null,   "delta": 45, "epsilon": 51, "hint":  43},
+          "5": { "alpha": 66, "beta": 67, "gamma": 50,   "delta": 14,   "epsilon": 87,  "hint": 2 }
+        }
+      },
+      {
+        "id": 10,
+        "name": "Silverpine Frontier",
+        "advancedMode": false,
+      
+        "grid3x2": [
+          ["5",  "2"],
+          ["4t",  "1t"],
+          ["3", "6t"]
+        ],
+      
+        "structures": [
+          {
+            "tileId": "5",
+            "placements": [
+              { "color": "white", "shape": "octagon", "q": 0, "r": 2 }
+            ]
+          },
+          {
+            "tileId": "2",
+            "placements": [
+              { "color": "green", "shape": "octagon", "q": 2, "r": 4 }
+            ]
+          },
+          {
+            "tileId": "4t",
+            "placements": [
+              { "color": "blue", "shape": "octagon", "q": 2, "r": 4 }
+            ]
+          },
+          {
+            "tileId": "1t",
+            "placements": [
+              { "color": "white", "shape": "triangle", "q": 0, "r": 3 }
+            ]
+          },
+          {
+            "tileId": "3",
+            "placements": [
+              { "color": "blue", "shape": "triangle", "q": 2, "r": 3 }
+            ]
+          },
+          {
+            "tileId": "6t",
+            "placements": [
+              { "color": "green", "shape": "triangle", "q": 0, "r": 0 }
+            ]
+          }
+        ],
+      
+        "books": {
+          "3": { "alpha": 17,  "beta": null, "gamma": 11, "delta": null, "epsilon": 66, "hint": 16 },
+          "4": { "alpha": 50, "beta": 65, "gamma": null,   "delta": 50, "epsilon": 50, "hint": 69 },
+          "5": { "alpha": 21, "beta": 67, "gamma": 43,   "delta": 7,   "epsilon": 30,  "hint": 23 }
+        }
+      },
+      
+{
+  "id": 11,
+  "name": "Shrouded Fen",
+  "advancedMode": false,
+
+  "grid3x2": [
+    ["2",  "1"],
+    ["5t",  "4"],
+    ["3", "6"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 1, "r": 4 },
+        { "color": "white", "shape": "triangle", "q": 0, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 0 },
+        { "color": "green", "shape": "octagon", "q": 1, "r": 3 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 17,  "beta": 86, "gamma": 6, "delta": null, "epsilon": null, "hint": 21 },
+    "4": { "alpha": 88, "beta": 8, "gamma": 1,   "delta": 13, "epsilon": null, "hint": 24 },
+    "5": { "alpha": 26, "beta": 34, "gamma": 27,   "delta": 85,   "epsilon": 86,  "hint": 18 }
+  }
+},
+{
+  "id": 12,
+  "name": "Ironwood Wilds",
+  "advancedMode": false,
+
+  "grid3x2": [
+    ["2",  "1t"],
+    ["4t",  "5"],
+    ["3t", "6t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 0, "r": 4 },
+        { "color": "white", "shape": "octagon", "q": 0, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 1, "r": 1 },
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 17,  "beta": 49, "gamma": null, "delta": 56, "epsilon": null, "hint": 7 },
+    "4": { "alpha": 95, "beta": 6, "gamma": 6,   "delta": 40, "epsilon": null, "hint": 53 },
+    "5": { "alpha": 66, "beta": 80, "gamma": 39,   "delta": 84,   "epsilon": 13,  "hint": 51 }
+  }
+},
+{
+  "id": 13,
+  "name": "Sunken Dominion",
+  "advancedMode": false,
+
+  "grid3x2": [
+    ["2",  "5"],
+    ["4t",  "1t"],
+    ["6", "3"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 2, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 0, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 4 },
+        { "color": "green", "shape": "octagon", "q": 0, "r": 0 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 13,  "beta": 73, "gamma": 73, "delta": null, "epsilon": null, "hint": 67 },
+    "4": { "alpha": 80, "beta": 36, "gamma": 27,   "delta": 20, "epsilon": null, "hint": 65 },
+    "5": { "alpha": 26, "beta": 54, "gamma": 18,   "delta": 53,   "epsilon": 9,  "hint": 64 }
+  }
+},
+{
+  "id": 14,
+  "name": "Moonshadow Plateau",
+  "advancedMode": false,
+
+  "grid3x2": [
+    ["6",  "4"],
+    ["5t",  "1"],
+    ["3t", "2t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 2, "r": 2 },
+        { "color": "green", "shape": "triangle", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 2, "r": 1 },
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 3 },
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 5}
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 91,  "beta": null, "gamma": null, "delta": 91, "epsilon": 9, "hint": 33 },
+    "4": { "alpha": 44, "beta": 80, "gamma": null,   "delta": 58, "epsilon": 42, "hint":  58},
+    "5": { "alpha": 66, "beta": 6, "gamma": 2,   "delta": 4,   "epsilon": 2,  "hint": 42 }
+  }
+},
+{
+  "id": 15,
+  "name": "Hollowcrest Ridge",
+  "advancedMode": false,
+
+  "grid3x2": [
+    ["4",  "5t"],
+    ["3",  "2t"],
+    ["6", "1"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 1 },
+        { "color": "green", "shape": "triangle", "q": 2, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 0, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 91,  "beta": null, "gamma": 12, "delta": 59, "epsilon": null, "hint": 2 },
+    "4": { "alpha": 27, "beta": 25, "gamma": 73,   "delta": null, "epsilon": 92, "hint": 9 },
+    "5": { "alpha": 12, "beta": 61, "gamma": 12,   "delta": 74,   "epsilon": 29,  "hint": 15 }
+  }
+},
+{
+  "id": 16,
+  "name": "Sapphire Delta",
+  "advancedMode": false,
+
+  "grid3x2": [
+    ["1t",  "5"],
+    ["6t",  "3t"],
+    ["2", "4"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 1 },
+        { "color": "white", "shape": "triangle", "q": 2, "r": 3 },
+        { "color": "white", "shape": "octagon", "q": 2, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 0, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 0, "r": 3 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 28,  "beta": null, "gamma": null, "delta": 85, "epsilon": 8, "hint": 25 },
+    "4": { "alpha": 2, "beta": 43, "gamma": null,   "delta": 52, "epsilon": 42, "hint": 74 },
+    "5": { "alpha": 17, "beta": 19, "gamma": 73,   "delta": 50,   "epsilon": 11,  "hint": 15 }
+  }
+},
+{
+  "id": 17,
+  "name": "Thornspire Territory",
+  "advancedMode": false,
+
+  "grid3x2": [
+    ["5",  "2t"],
+    ["3",  "6t"],
+    ["4", "1"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 0, "r": 3 },
+        { "color": "green", "shape": "octagon", "q": 0, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 1, "r": 4 },
+        { "color": "white", "shape": "triangle", "q": 2, "r": 4 }
+
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 42,  "beta": null, "gamma": 1, "delta": null, "epsilon": 66, "hint": 53 },
+    "4": { "alpha": 19, "beta": 89, "gamma": null,   "delta": 30, "epsilon": 89, "hint": 29 },
+    "5": { "alpha": 13, "beta": 62, "gamma": 85,   "delta": 46,   "epsilon": 34,  "hint": 51 }
+  }
+},
+{
+  "id": 18,
+  "name": "Gilded Barrens",
+  "advancedMode": false,
+
+  "grid3x2": [
+    ["2",  "3"],
+    ["6",  "1t"],
+    ["5", "4t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 2 },
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 0, "r": 0 },
+        { "color": "white", "shape": "octagon", "q": 2, "r": 1 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 17,  "beta": 45, "gamma": 84, "delta": null, "epsilon": null, "hint": 7 },
+    "4": { "alpha": 68, "beta": 5, "gamma": 31,   "delta": 77, "epsilon": null, "hint": 72 },
+    "5": { "alpha": 25, "beta": 80, "gamma": 39,   "delta": 13,   "epsilon": 34,  "hint": 9 }
+  }
+},
+{
+  "id": 19,
+  "name": "Cinderroot Wastes",
+  "advancedMode": false,
+
+  "grid3x2": [
+    ["3t",  "2"],
+    ["1",  "5"],
+    ["4", "6"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 0, "r": 1 },
+        { "color": "green", "shape": "triangle", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 3 },
+        { "color": "white", "shape": "octagon", "q": 2, "r": 4 },
+        { "color": "green", "shape": "octagon", "q": 1, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 3 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 17, "gamma": 71, "delta": null, "epsilon": 23, "hint": 29 },
+    "4": { "alpha": 3, "beta": null, "gamma": 20,   "delta": 30, "epsilon": 17, "hint": 38 },
+    "5": { "alpha": 52, "beta": 76, "gamma": 36,   "delta": 20,   "epsilon": 67,  "hint": 78 }
+  }
+},
+{
+  "id": 20,
+  "name": "Mistbound Lowlands",
+  "advancedMode": false,
+
+  "grid3x2": [
+    ["4t",  "3t"],
+    ["5",  "2"],
+    ["1t", "6t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 1, "r": 2 },
+        { "color": "white", "shape": "octagon", "q": 2, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 1, "r": 5 },
+        { "color": "green", "shape": "octagon", "q": 1, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 1 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 45, "gamma": null, "delta": 43, "epsilon": 51, "hint": 47 },
+    "4": { "alpha": null, "beta": 42, "gamma": 23,   "delta": 91, "epsilon": 41, "hint": 42 },
+    "5": { "alpha": 42, "beta": 46, "gamma": 96,   "delta": 34,   "epsilon": 11,  "hint": 34 }
+  }
+},
+{
+  "id": 21,
+  "name": "Wyrmwood Range",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["5",  "6"],
+    ["4t",  "2"],
+    ["3", "1"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 0, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 0, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 0, "r": 2 },
+        { "color": "black", "shape": "triangle", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 1 },
+        { "color": "black", "shape": "octagon", "q": 0, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 0 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 78,  "beta": null, "gamma": 1, "delta": null, "epsilon": 14, "hint": 64 },
+    "4": { "alpha": 18, "beta": 81, "gamma": null,   "delta": 58, "epsilon": 93, "hint": 62 },
+    "5": { "alpha": 24, "beta": 1, "gamma": 44,   "delta": 72,   "epsilon": 70,  "hint": 24 }
+  }
+},
+{
+  "id": 22,
+  "name": "Ivory Crossing",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["1t",  "2t"],
+    ["6",  "4"],
+    ["3", "5t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 0, "r": 0 },
+        { "color": "white", "shape": "octagon", "q": 1, "r": 0 },
+        { "color": "black", "shape": "triangle", "q": 1, "r": 5 },
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 1, "r": 0 },
+        { "color": "white", "shape": "triangle", "q": 0, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 0, "r": 0 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 10, "gamma": 24, "delta": 21, "epsilon": null, "hint": 59 },
+    "4": { "alpha": 11, "beta": null, "gamma": 35,   "delta": 2, "epsilon": 20, "hint": 55 },
+    "5": { "alpha": 48, "beta": 26, "gamma": 87,   "delta": 32,   "epsilon": 56,  "hint": 76 }
+  }
+},
+{
+  "id": 23,
+  "name": "Stormcall Prairie",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["4",  "1t"],
+    ["3",  "5t"],
+    ["6t", "2t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 5 },
+        { "color": "green", "shape": "triangle", "q": 0, "r": 3 },
+        { "color": "black", "shape": "octagon", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 1, "r": 0 },
+        { "color": "green", "shape": "octagon", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 2, "r": 1 },
+        { "color": "black", "shape": "triangle", "q": 0, "r": 1 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 89,  "beta": null, "gamma": 62, "delta": 67, "epsilon": null, "hint": 75 },
+    "4": { "alpha": 39, "beta": 5, "gamma": 89,   "delta": null, "epsilon": 82, "hint": 8 },
+    "5": { "alpha": 51, "beta": 92, "gamma": 68,   "delta": 90,   "epsilon": 13,  "hint": 78 }
+  }
+},
+{
+  "id": 24,
+  "name": "Bloodstone Frontier",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["2",  "6"],
+    ["3",  "1t"],
+    ["4", "5t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 2, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 0 },
+        { "color": "black", "shape": "octagon", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 2, "r": 0 },
+        { "color": "white", "shape": "triangle", "q": 1, "r": 4 },
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 18,  "beta": 85, "gamma": 13, "delta": null, "epsilon": null, "hint": 62 },
+    "4": { "alpha": 41, "beta": 76, "gamma": 2,   "delta": 51, "epsilon": null, "hint": 23 },
+    "5": { "alpha": 35, "beta": 57, "gamma": 14,   "delta": 89,   "epsilon": 81,  "hint": 61 }
+  }
+},
+{
+  "id": 25,
+  "name": "Ashen Expanse",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["5",  "6"],
+    ["4t",  "3t"],
+    ["1", "2t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 2, "r": 0 },
+        { "color": "black", "shape": "triangle", "q": 0, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 2 },
+        { "color": "white", "shape": "octagon", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 1, "r": 3 },
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 2 },
+        { "color": "green", "shape": "triangle", "q": 0, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 0, "r": 2 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 42,  "beta": null, "gamma": 49, "delta": null, "epsilon": 86, "hint": 26 },
+    "4": { "alpha": 6, "beta": 59, "gamma": null,   "delta": 50, "epsilon": 19, "hint": 31 },
+    "5": { "alpha": 8, "beta": 49, "gamma": 81,   "delta": 89,   "epsilon": 70,  "hint": 61 }
+  }
+},
+{
+  "id": 26,
+  "name": "Greymoor Tundra",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["4t",  "5t"],
+    ["2",  "3t"],
+    ["1", "6t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 2, "r": 5 },
+        { "color": "white", "shape": "triangle", "q": 1, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 4 },
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 0, "r": 0 },
+        { "color": "green", "shape": "triangle", "q": 2, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 1, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 1, "r": 0 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 21, "gamma": null, "delta": 25, "epsilon": 73, "hint": 17 },
+    "4": { "alpha": null, "beta": 75, "gamma": 78,   "delta": 80, "epsilon": 9, "hint": 45 },
+    "5": { "alpha": 73, "beta": 15, "gamma": 70,   "delta": 63,   "epsilon": 96,  "hint": 54 }
+  }
+},
+{
+  "id": 27,
+  "name": "Deepmere Basin",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["1t",  "6t"],
+    ["4t",  "2t"],
+    ["5", "3"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 2, "r": 0 },
+        { "color": "black", "shape": "octagon", "q": 0, "r": 1 },
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 1 },
+        { "color": "white", "shape": "octagon", "q": 0, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 5 },
+        { "color": "black", "shape": "triangle", "q": 2, "r": 1 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 40, "gamma": 54, "delta": 45, "epsilon": null, "hint": 5 },
+    "4": { "alpha": 84, "beta": null, "gamma": 86,   "delta": 54, "epsilon": 18, "hint": 9 },
+    "5": { "alpha": 22, "beta": 26, "gamma": 73,   "delta": 48,   "epsilon": 11,  "hint": 13 }
+  }
+},
+{
+  "id": 28,
+  "name": "Hollowlight Steppe",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["2",  "3"],
+    ["1",  "4"],
+    ["5t", "6"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 1, "r": 0 },
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 2, "r": 2 },
+        { "color": "white", "shape": "triangle", "q": 2, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 3 },
+        { "color": "black", "shape": "octagon", "q": 1, "r": 5 },
+        { "color": "black", "shape": "triangle", "q": 2, "r": 2 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 37,  "beta": 34, "gamma": 39, "delta": null, "epsilon": null, "hint": 78 },
+    "4": { "alpha": 92, "beta": 42, "gamma": 69,   "delta": 49, "epsilon": null, "hint": 75 },
+    "5": { "alpha": 35, "beta": 56, "gamma": 69,   "delta": 49,   "epsilon": 31,  "hint": 26 }
+  }
+},
+{
+  "id": 29,
+  "name": "Nightfall Peninsula",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["3",  "4t"],
+    ["1t",  "5"],
+    ["2", "6t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 5 },
+        { "color": "white", "shape": "octagon", "q": 0, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 4 },
+        { "color": "black", "shape": "octagon", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 1, "r": 2 },
+        { "color": "green", "shape": "octagon", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 1, "r": 4 },
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 20,  "beta": 85, "gamma": null, "delta": null, "epsilon": 27, "hint": 12 },
+    "4": { "alpha": 90, "beta": 60, "gamma": 24,   "delta": null, "epsilon": 76, "hint": 3 },
+    "5": { "alpha": 29, "beta": 80, "gamma": 44,   "delta": 20,   "epsilon": 41,  "hint": 31 }
+  }
+},
+{
+  "id": 30,
+  "name": "Driftwood Marsh",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["4t",  "3"],
+    ["6",  "2"],
+    ["1t", "5"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 0 },
+        { "color": "white", "shape": "octagon", "q": 2, "r": 3 },
+        { "color": "black", "shape": "triangle", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 0, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 0 },
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 54,  "beta": null, "gamma": 46, "delta": 68, "epsilon": null, "hint": 20 },
+    "4": { "alpha": 86, "beta": 13, "gamma": 88,   "delta": null, "epsilon": 11, "hint": 65 },
+    "5": { "alpha": 19, "beta": 94, "gamma": 56,   "delta": 75,   "epsilon": 89,  "hint": 38 }
+  }
+},
+{
+  "id": 31,
+  "name": "Coldharbor Reach",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["3t",  "4t"],
+    ["6t",  "5"],
+    ["1", "2t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 0, "r": 1 },
+        { "color": "white", "shape": "octagon", "q": 2, "r": 5 },
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 3 },
+        { "color": "green", "shape": "octagon", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 1, "r": 2 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 22, "gamma": 72, "delta": null, "epsilon": 84, "hint": 72 },
+    "4": { "alpha": 56, "beta": null, "gamma": 52,   "delta": 6, "epsilon": 29, "hint": 46 },
+    "5": { "alpha": 32, "beta": 50, "gamma": 35,   "delta": 87,   "epsilon": 56,  "hint": 69 }
+  }
+},
+{
+  "id": 32,
+  "name": "Wildspire Canyon",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["3",  "4"],
+    ["6t",  "2t"],
+    ["5t", "1t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 2, "r": 0 },
+        { "color": "white", "shape": "triangle", "q": 1, "r": 1 },
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 0, "r": 1 },
+        { "color": "green", "shape": "triangle", "q": 2, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 2, "r": 3 },
+        { "color": "white", "shape": "octagon", "q": 1, "r": 4 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 37,  "beta": 74, "gamma": null, "delta": null, "epsilon": 13, "hint": 25 },
+    "4": { "alpha": 52, "beta": 46, "gamma": 92,   "delta": null, "epsilon": 83, "hint": 44 },
+    "5": { "alpha": 30, "beta": 61, "gamma": 18,   "delta": 89,   "epsilon": 53,  "hint": 17 }
+  }
+},
+{
+  "id": 33,
+  "name": "Amberfen Territory",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["3",  "5t"],
+    ["4",  "1t"],
+    ["2t", "6t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 0 },
+        { "color": "green", "shape": "triangle", "q": 2, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 2, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 1, "r": 0 },
+        { "color": "white", "shape": "octagon", "q": 2, "r": 3 },
+        { "color": "black", "shape": "triangle", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 1, "r": 0 },
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 3 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 54,  "beta": 67, "gamma": null, "delta": null, "epsilon": 35, "hint": 58 },
+    "4": { "alpha": 39, "beta": 39, "gamma": 36,   "delta": null, "epsilon": 25, "hint": 66 },
+    "5": { "alpha": 21, "beta": 75, "gamma": 14,   "delta": 95,   "epsilon": 30,  "hint": 45 }
+  }
+},
+{
+  "id": 34,
+  "name": "Lost Meridian",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["4t",  "1t"],
+    ["2t",  "6t"],
+    ["3t", "5t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 2, "r": 1 },
+        { "color": "green", "shape": "triangle", "q": 2, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 1 },
+        { "color": "white", "shape": "triangle", "q": 2, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 0, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 2, "r": 2 },
+        { "color": "black", "shape": "octagon", "q": 1, "r": 3 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 46, "gamma": null, "delta": 95, "epsilon": 75, "hint": 52 },
+    "4": { "alpha": null, "beta": 48, "gamma": 39,   "delta": 18, "epsilon": 70, "hint": 37 },
+    "5": { "alpha": 87, "beta": 30, "gamma": 64,   "delta": 14,   "epsilon": 68,  "hint": 63 }
+  }
+},
+{
+  "id": 35,
+  "name": "Shadowfen Basin",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["2",  "1t"],
+    ["5t",  "6"],
+    ["3", "4t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 0, "r": 1 },
+        { "color": "green", "shape": "triangle", "q": 1, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 0, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 2, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 1 },
+        { "color": "black", "shape": "octagon", "q": 2, "r": 1 },
+        { "color": "white", "shape": "triangle", "q": 2, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 23,  "beta": 85, "gamma": null, "delta": 67, "epsilon": null, "hint": 32 },
+    "4": { "alpha": 78, "beta": 81, "gamma": 68,   "delta": 53, "epsilon": null, "hint": 50 },
+    "5": { "alpha": 45, "beta": 59, "gamma": 24,   "delta": 26,   "epsilon": 13,  "hint": 48 }
+  }
+},
+{
+  "id": 36,
+  "name": "Copperveil Plateau",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["4t",  "2t"],
+    ["5t",  "1"],
+    ["3t", "6"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 0, "r": 4 },
+        { "color": "green", "shape": "triangle", "q": 1, "r": 4 },
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 0, "r": 2 },
+        { "color": "green", "shape": "octagon", "q": 1, "r": 1 },
+        { "color": "black", "shape": "octagon", "q": 1, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 4 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 68, "gamma": null, "delta": 5, "epsilon": 79, "hint": 51 },
+    "4": { "alpha": null, "beta": 62, "gamma": 1,   "delta": 78, "epsilon": 65, "hint": 48 },
+    "5": { "alpha": 91, "beta": 87, "gamma": 88,   "delta": 63,   "epsilon": 49,  "hint": 68 }
+  }
+},
+{
+  "id": 37,
+  "name": "Frostroot Vale",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["4",  "2"],
+    ["1",  "3"],
+    ["5", "6t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 1, "r": 0 },
+        { "color": "green", "shape": "octagon", "q": 0, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 1, "r": 5 },
+        { "color": "white", "shape": "triangle", "q": 1, "r": 3 },
+        { "color": "black", "shape": "octagon", "q": 0, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 4 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 67,  "beta": null, "gamma": 25, "delta": 95, "epsilon": null, "hint": 32 },
+    "4": { "alpha": 86, "beta": 33, "gamma": 50,   "delta": null, "epsilon": 73, "hint": 22 },
+    "5": { "alpha": 16, "beta": 62, "gamma": 11,   "delta": 53,   "epsilon": 61,  "hint": 71 }
+  }
+},
+{
+  "id": 38,
+  "name": "Blackpine Wildlands",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["5",  "6t"],
+    ["4t",  "1t"],
+    ["3", "2t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 0, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 1, "r": 2 },
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 5 },
+        { "color": "green", "shape": "triangle", "q": 0, "r": 2 },
+        { "color": "green", "shape": "octagon", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 1, "r": 1 },
+        { "color": "white", "shape": "octagon", "q": 2, "r": 2 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 79,  "beta": null, "gamma": 11, "delta": null, "epsilon": 30, "hint": 49 },
+    "4": { "alpha": 62, "beta": 78, "gamma": null,   "delta": 87, "epsilon": 83, "hint": 7 },
+    "5": { "alpha": 65, "beta": 89, "gamma": 53,   "delta": 45,   "epsilon": 57,  "hint": 40 }
+  }
+},
+
+{
+  "id": 39,
+  "name": "Duskwater Crossing",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["2t",  "6t"],
+    ["5t",  "3t"],
+    ["4", "1t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 1, "r": 0 },
+        { "color": "green", "shape": "triangle", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "white", "shape": "triangle" , "q": 1, "r": 0 },
+        { "color": "green", "shape": "octagon", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 1 },
+        { "color": "black", "shape": "octagon", "q": 1, "r": 4 },
+        { "color": "black", "shape": "triangle", "q": 0, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 1 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 64, "gamma": 67, "delta": 43, "epsilon": null, "hint": 6 },
+    "4": { "alpha": 16, "beta": null, "gamma": 45,   "delta": 28, "epsilon": 16, "hint": 3 },
+    "5": { "alpha": 80, "beta": 60, "gamma": 35,   "delta": 16,   "epsilon": 49,  "hint": 68 }
+  }
+},
+{
+  "id": 40,
+  "name": "Silent Range",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["3",  "1"],
+    ["6",  "5t"],
+    ["4", "2t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 0, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 0, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 2 },
+        { "color": "white", "shape": "octagon", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 1, "r": 0 },
+        { "color": "black", "shape": "octagon", "q": 0, "r": 4 },
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 2 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 81,  "beta": 78, "gamma": null, "delta": 29, "epsilon": null, "hint": 32 },
+    "4": { "alpha": 31, "beta": 16, "gamma": 7,   "delta": 69, "epsilon": null, "hint": 11 },
+    "5": { "alpha": 38, "beta": 83, "gamma": 78,   "delta": 42,   "epsilon": 35,  "hint": 43 }
+  }
+},
+{
+  "id": 41,
+  "name": "Elderwood Frontier",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["2",  "6t"],
+    ["1t",  "5t"],
+    ["3", "4t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 1, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 0, "r": 2 },
+        { "color": "green", "shape": "triangle", "q": 2, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 5 },
+        { "color": "white", "shape": "triangle", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 2, "r": 0 },
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 0, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 58,  "beta": 53, "gamma": null, "delta": 45, "epsilon": null, "hint": 74 },
+    "4": { "alpha": 70, "beta": 47, "gamma": 28,   "delta": 82, "epsilon": null, "hint": 19 },
+    "5": { "alpha": 5, "beta": 44, "gamma": 19,   "delta": 46,   "epsilon": 65,  "hint": 34 }
+  }
+},
+{
+  "id": 42,
+  "name": "Palehaven Expanse",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["4t",  "1"],
+    ["5",  "2t"],
+    ["6", "3t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 2, "r": 4 },
+        { "color": "green", "shape": "triangle", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 1, "r": 2 },
+        { "color": "black", "shape": "triangle", "q": 2, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 2 },
+        { "color": "white", "shape": "octagon", "q": 1, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 22, "gamma": 87, "delta": null, "epsilon": 64, "hint": 64 },
+    "4": { "alpha": 26, "beta": null, "gamma": 42,   "delta": 17, "epsilon": 60, "hint": 59 },
+    "5": { "alpha": 42, "beta": 87, "gamma": 36,   "delta": 58,   "epsilon": 40,  "hint": 53 }
+  }
+},
+{
+  "id": 43,
+  "name": "Sunscar Desert",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["2t",  "5t"],
+    ["4",  "3t"],
+    ["6", "1"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 0, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 1, "r": 4 },
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 0, "r": 5 },
+        { "color": "white", "shape": "triangle", "q": 1, "r": 1 },
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 2, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 11, "gamma": 77, "delta": 95, "epsilon": null, "hint": 15 },
+    "4": { "alpha": 74, "beta": null, "gamma": 47,   "delta": 38, "epsilon": 53, "hint": 30 },
+    "5": { "alpha": 91, "beta": 35, "gamma": 48,   "delta": 32,   "epsilon": 43,  "hint": 8 }
+  }
+},
+{
+  "id": 44,
+  "name": "Hidden Meridian",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["4t",  "1t"],
+    ["5",  "6"],
+    ["2t", "3t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 1, "r": 1 },
+        { "color": "green", "shape": "octagon", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 1, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 1, "r": 0 },
+        { "color": "black", "shape": "triangle", "q": 2, "r": 4 },
+        { "color": "green", "shape": "triangle", "q": 0, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 6, "gamma": null, "delta": 22, "epsilon": 92, "hint": 80 },
+    "4": { "alpha": null, "beta": 72, "gamma": 4,   "delta": 26, "epsilon": 2, "hint": 44 },
+    "5": { "alpha": 1, "beta": 26, "gamma": 66,   "delta": 32,   "epsilon": 83,  "hint": 35 }
+  }
+},
+{
+  "id": 45,
+  "name": "Thornwild Territory",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["4t",  "3"],
+    ["6",  "2"],
+    ["1t", "5"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 0 },
+        { "color": "white", "shape": "octagon", "q": 2, "r": 3 },
+        { "color": "black", "shape": "triangle", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 0, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 0 },
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 40, "gamma": 20, "delta": null, "epsilon": 59, "hint": 41 },
+    "4": { "alpha": 21, "beta": null, "gamma": 45,   "delta": 33, "epsilon": 14, "hint": 58 },
+    "5": { "alpha": 49, "beta": 12, "gamma": 71,   "delta": 8,   "epsilon": 94,  "hint": 43 }
+  }
+},
+{
+  "id": 46,
+  "name": "Azure Mire",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["3t",  "6t"],
+    ["2",  "1t"],
+    ["4t", "5"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 0, "r": 0 },
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 3 },
+        { "color": "green", "shape": "octagon", "q": 1, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 2 },
+        { "color": "white", "shape": "octagon", "q": 2, "r": 4 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 11, "gamma": 42, "delta": null, "epsilon": 23, "hint": 28 },
+    "4": { "alpha": 7, "beta": null, "gamma": 87,   "delta": 87, "epsilon": 3, "hint": 40 },
+    "5": { "alpha": 1, "beta": 36, "gamma": 95,   "delta": 36,   "epsilon": 94,  "hint": 63 }
+  }
+},
+{
+  "id": 47,
+  "name": "Forgotten Reach",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["1t",  "2t"],
+    ["5",  "6"],
+    ["4t", "3t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 1, "r": 2 },
+        { "color": "green", "shape": "octagon", "q": 2, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 0, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 0, "r": 0 },
+        { "color": "green", "shape": "triangle", "q": 1, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 3 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 1, "gamma": 95, "delta": 36, "epsilon": null, "hint": 17 },
+    "4": { "alpha": 17, "beta": null, "gamma": 42,   "delta": 27, "epsilon": 70, "hint": 45 },
+    "5": { "alpha": 84, "beta": 26, "gamma": 50,   "delta": 50,   "epsilon": 28,  "hint": 10 }
+  }
+},
+{
+  "id": 48,
+  "name": "Crownstone Basin",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["2t",  "1t"],
+    ["5",  "6"],
+    ["4t", "3t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "1t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 4 },
+        { "color": "green", "shape": "triangle", "q": 0, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 1, "r": 5 },
+        { "color": "white", "shape": "octagon", "q": 1, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 0, "r": 0 },
+        { "color": "white", "shape": "triangle", "q": 1, "r": 5 },
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 1 }
+      ]
+    },
+    {
+      "tileId": "4t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 0, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 5, "gamma": 94, "delta": 63, "epsilon": null, "hint": 59 },
+    "4": { "alpha": 12, "beta": null, "gamma": 35,   "delta": 54, "epsilon": 33, "hint": 12 },
+    "5": { "alpha": 33, "beta": 25, "gamma": 75,   "delta": 23,   "epsilon": 69,  "hint": 6 }
+  }
+},
+{
+  "id": 49,
+  "name": "Windscar Highlands",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["6",  "1"],
+    ["3",  "5t"],
+    ["2t", "4"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 2, "r": 0 },
+        { "color": "green", "shape": "octagon", "q": 2, "r": 4 },
+        { "color": "black", "shape": "triangle", "q": 1, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 1, "r": 4 },
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 5 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 90,  "beta": null, "gamma": 11, "delta": null, "epsilon": 72, "hint": 50 },
+    "4": { "alpha": 23, "beta": 95, "gamma": null,   "delta": 21, "epsilon": 63, "hint": 49 },
+    "5": { "alpha": 3, "beta": 89, "gamma": 68,   "delta": 77,   "epsilon": 17,  "hint": 41 }
+  }
+},
+{
+  "id": 50,
+  "name": "Gloomwater Expanse",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["2",  "5t"],
+    ["3",  "4"],
+    ["6t", "1"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 0, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 1, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 0, "r": 2 },
+        { "color": "green", "shape": "octagon", "q": 2, "r": 2 },
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 0, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 1, "r": 4 },
+        { "color": "black", "shape": "octagon", "q": 2, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 13,  "beta": 83, "gamma": null, "delta": 92, "epsilon": null, "hint": 47 },
+    "4": { "alpha": 85, "beta": 2, "gamma": 78,   "delta": 13, "epsilon": null, "hint": 29 },
+    "5": { "alpha": 44, "beta": 73, "gamma": 28,   "delta": 52,   "epsilon": 81,  "hint": 18 }
+  }
+},
+{
+  "id": 51,
+  "name": "Gloomhaven",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["5t",  "4"],
+    ["3",  "1"],
+    ["2", "6t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "5t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 1, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 0, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 2, "r": 0 },
+        { "color": "green", "shape": "triangle", "q": 1, "r": 1 },
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 1, "r": 1 },
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 3 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": null,  "beta": 32, "gamma": null, "delta": 63, "epsilon": 83, "hint": 56 },
+    "4": { "alpha": null, "beta": 94, "gamma": 58,   "delta": 59, "epsilon": 6, "hint": 39 },
+    "5": { "alpha": 94, "beta": 64, "gamma": 74,   "delta": 6,   "epsilon": 79,  "hint": 39 }
+  }
+},
+{
+  "id": 52,
+  "name": "The Uncharted Dominion",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["1",  "2"],
+    ["6",  "5"],
+    ["4", "3t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 2, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "2",
+      "placements": [
+        { "color": "blue", "shape": "octagon", "q": 1, "r": 2 },
+        { "color": "green", "shape": "triangle", "q": 2, "r": 3 },
+        { "color": "black", "shape": "triangle", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 2, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 1, "r": 2 }
+      ]
+    },
+    {
+      "tileId": "3t",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 1, "r": 0 },
+        { "color": "blue", "shape": "triangle", "q": 1, "r": 5 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 13,  "beta": 65, "gamma": 65, "delta": null, "epsilon": null, "hint": 8 },
+    "4": { "alpha": 77, "beta": 51, "gamma": 84,   "delta": 64, "epsilon": null, "hint": 79 },
+    "5": { "alpha": 24, "beta": 91, "gamma": 68,   "delta": 72,   "epsilon": 41,  "hint": 11 }
+  }
+},
+{
+  "id": 53,
+  "name": "Hidden Lands",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["3",  "5"],
+    ["1",  "2t"],
+    ["4", "6t"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 0, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 0, "r": 1 },
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "black", "shape": "octagon", "q": 1, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 2, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "6t",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 0, "r": 2 },
+        { "color": "white", "shape": "triangle", "q": 2, "r": 4 },
+        { "color": "black", "shape": "triangle", "q": 0, "r": 0 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 17,  "beta": 16, "gamma": null, "delta": null, "epsilon": 73, "hint": 52 },
+    "4": { "alpha": 87, "beta": 29, "gamma": 88,   "delta": null, "epsilon": 85, "hint": 35 },
+    "5": { "alpha": 7, "beta": 44, "gamma": 38,   "delta": 31,   "epsilon": 7,  "hint": 11 }
+  }
+},
+{
+  "id": 54,
+  "name": "Lost Lands",
+  "advancedMode": true,
+
+  "grid3x2": [
+    ["6",  "5"],
+    ["3",  "4"],
+    ["2t", "1"]
+  ],
+
+  "structures": [
+    {
+      "tileId": "6",
+      "placements": [
+        { "color": "blue", "shape": "triangle", "q": 2, "r": 2 },
+        { "color": "black", "shape": "octagon", "q": 0, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "5",
+      "placements": [
+        { "color": "white", "shape": "triangle", "q": 0, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "3",
+      "placements": [
+        { "color": "black", "shape": "triangle", "q": 2, "r": 0 }
+      ]
+    },
+    {
+      "tileId": "4",
+      "placements": [
+        { "color": "white", "shape": "octagon", "q": 0, "r": 3 }
+      ]
+    },
+    {
+      "tileId": "2t",
+      "placements": [
+        { "color": "green", "shape": "triangle", "q": 0, "r": 1 },
+        { "color": "blue", "shape": "octagon", "q": 2, "r": 4 }
+      ]
+    },
+    {
+      "tileId": "1",
+      "placements": [
+        { "color": "green", "shape": "octagon", "q": 1, "r": 2 }
+      ]
+    }
+  ],
+
+  "books": {
+    "3": { "alpha": 94,  "beta": null, "gamma": null, "delta": 83, "epsilon": 1, "hint": 66 },
+    "4": { "alpha": 43, "beta": 81, "gamma": null,   "delta": 3, "epsilon": 79, "hint": 70 },
+    "5": { "alpha": 54, "beta": 68, "gamma": 74,   "delta": 62,   "epsilon": 73,  "hint": 34 }
+  }
+}
+    ]
+  }
+  

@@ -1,0 +1,111 @@
+/* =========================
+   Scroll area
+   ========================= */
+
+QScrollArea {
+    background: transparent;
+    border: none;
+}
+
+/* ====== shared scrollbar styling ====== */
+QScrollArea QScrollBar:vertical,
+QScrollArea QScrollBar:horizontal {
+    background: transparent;
+    border: none;
+}
+
+QScrollArea QScrollBar::add-line:vertical,
+QScrollArea QScrollBar::sub-line:vertical,
+QScrollArea QScrollBar::add-line:horizontal,
+QScrollArea QScrollBar::sub-line:horizontal {
+    height: 0px;
+    width: 0px;
+    max-height: 0px;
+    max-width: 0px;
+    border: none;
+    background: transparent;
+}
+
+QScrollArea QScrollBar::up-arrow:vertical,
+QScrollArea QScrollBar::down-arrow:vertical,
+QScrollArea QScrollBar::left-arrow:horizontal,
+QScrollArea QScrollBar::right-arrow:horizontal {
+    width: 0px;
+    height: 0px;
+    border: none;
+    background: transparent;
+}
+
+QScrollArea QScrollBar::add-page:vertical,
+QScrollArea QScrollBar::sub-page:vertical,
+QScrollArea QScrollBar::add-page:horizontal,
+QScrollArea QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+QScrollArea QScrollBar::handle:vertical,
+QScrollArea QScrollBar::handle:horizontal {
+    background: #d6dde2;
+    border: none;
+    border-radius: 5px;
+}
+
+/* ====== orientation-specific (dimensions only) ====== */
+QScrollArea QScrollBar:vertical {
+    width: 10px;
+    margin: 6px 4px 6px 0px;
+}
+
+QScrollArea QScrollBar::handle:vertical {
+    min-height: 24px;
+    border-radius: 5px;
+}
+
+QScrollArea QScrollBar:horizontal {
+    height: 10px;
+    border-radius: 5px;
+    margin: 6px 4px 0px 4px;
+}
+
+QScrollArea QScrollBar::handle:horizontal {
+    min-width: 24px;
+    height: 10px;
+    border-radius: 5px;
+}
+
+/* Main window horizontal bar: match vertical (10px, radius 5), remove corner overlap */
+QScrollArea#mainScroll {
+    border: none;
+}
+QScrollArea#mainScroll::corner {
+    background: transparent;
+    width: 0;
+}
+QScrollArea#mainScroll QScrollBar:horizontal {
+    height: 10px;
+    min-height: 10px;
+    max-height: 10px;
+    padding: 0;
+    margin: 6px 4px 0px 4px;
+    background: transparent;
+    border: none;
+}
+QScrollArea#mainScroll QScrollBar::handle:horizontal {
+    min-width: 24px;
+    height: 10px;
+    margin: 0;
+    padding: 0;
+    background: #d6dde2;
+    border: none;
+    border-radius: 5px;
+}
+QScrollArea#mainScroll QScrollBar::add-line:horizontal,
+QScrollArea#mainScroll QScrollBar::sub-line:horizontal {
+    width: 0;
+    height: 0;
+}
+
+/* Maps Library: opaque chrome (global QScrollArea is transparent; viewport is a separate widget). */
+QScrollArea#mapsLibMapListScroll {
+    background: #f2f4f6;
+}

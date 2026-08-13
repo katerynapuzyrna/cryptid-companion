@@ -1,0 +1,128 @@
+/* =========================
+   Map list cards
+   ========================= */
+
+QFrame#mapCard {
+    background: #f9fbfc;
+    border: 1px solid #d8e0e6;
+    border-radius: 12px;
+    padding: 0;
+}
+
+QFrame#mapCard[interactive="true"]:hover {
+    border: 1px solid #b9d9d6;
+}
+
+QFrame#mapCard[selected="true"] {
+    background: #e8f4f2;
+    border: 1px solid #b9d9d6;
+    border-radius: 12px;
+}
+
+QLabel#mapCardName {
+    background: transparent;
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+QWidget#mapCardCluesContainer {
+    background: #ffffff;
+    border: 1px solid #d8e0e6;
+    border-radius: 16px;
+    padding: 0;
+}
+
+QLabel#mapCardClueOrdinal {
+    min-width: 32px;
+}
+
+QLineEdit#mapCardPlayerName {
+    min-width: 210px;
+    max-width: 220px;
+    height: 30px;
+}
+
+QComboBox#mapCardColorCombo {
+    min-width: 165px;
+    max-width: 165px;
+    height: 30px;
+}
+
+QComboBox#mapCardClueCombo {
+    min-width: 350px;
+    height: 30px;
+}
+
+QFrame#mapCardClueBlurOverlay {
+    background: transparent;
+    border: 1px solid #dde5ea;
+    border-radius: 12px;
+    min-width: 350px;
+    height: 30px;
+}
+
+QLabel#mapCardClueBlurLabel {
+    background: transparent;
+    color:rgb(34, 41, 46);
+    max-height: 22px;
+}
+
+QCheckBox#mapCardBlurToggle {
+    background: transparent;
+}
+
+QWidget#mapCardNameRow {
+    background: transparent;
+}
+
+QToolButton#mapCardCustomEdit,
+QToolButton#mapCardCustomDelete,
+QToolButton#mapCardNamePen {
+    background: transparent;
+    border: none;
+    padding: 2px;
+}
+
+QToolButton#mapCardCustomEdit:hover,
+QToolButton#mapCardCustomDelete:hover,
+QToolButton#mapCardNamePen:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}
+
+/* Solve / Deduction board overlay: save only (same hover as custom edit/delete) */
+QToolButton#boardOverlaySave {
+    background: transparent;
+    border: none;
+    padding: 2px;
+}
+
+QToolButton#boardOverlaySave:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}
+
+QToolButton#boardUndoFreeze,
+QToolButton#boardUndoHighlight {
+    background: transparent;
+    border: none;
+    padding: 2px;
+}
+
+QToolButton#boardUndoFreeze:hover,
+QToolButton#boardUndoHighlight:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}
+
+QToolButton#btnHotseatUndoAdditionalSharingQ,
+QToolButton#btnHotseatUndoAdditionalSharingS {
+    background: transparent;
+    border: none;
+}
+
+QToolButton#btnHotseatUndoAdditionalSharingQ:hover,
+QToolButton#btnHotseatUndoAdditionalSharingS:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 4px;
+}

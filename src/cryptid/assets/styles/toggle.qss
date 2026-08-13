@@ -1,0 +1,36 @@
+/* =========================
+   Toggle checkboxes (SVG)
+   ========================= */
+
+QCheckBox {
+    spacing: 10px;
+    color: #182022;
+    background: #f9fbfc;
+}
+
+/* Board freeze row is embedded via QGraphicsProxyWidget; opaque QCheckBox bg prevents
+   :checked indicator SVG from repainting (toggle stays visually “off”). */
+QWidget#freezeMapRow QCheckBox {
+    background: transparent;
+}
+
+QCheckBox::indicator {
+    width: 54px;
+    height: 28px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/assets/icons/toggle_off.svg);
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/assets/icons/toggle_on.svg);
+}
+
+QCheckBox::indicator:unchecked:disabled {
+    image: url(:/assets/icons/toggle_off_disabled.svg);
+}
+
+QCheckBox::indicator:checked:disabled {
+    image: url(:/assets/icons/toggle_on_disabled.svg);
+}

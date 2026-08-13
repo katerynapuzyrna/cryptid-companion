@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="48"
+     height="48"
+     viewBox="0 0 160 160">
+
+  <path
+    d="
+      M80 20
+      C80 20 33.33 66.67 33.33 93.33
+      C33.33 120 53.33 140 80 140
+      C106.67 140 126.67 120 126.67 93.33
+      C126.67 66.67 80 20 80 20
+      Z
+    "
+    fill="#00aa00"
+    stroke="#9aa3ab"
+    stroke-width="4"
+    stroke-linejoin="round"
+  />
+<!-- + -->
+  <path
+    d="M64 66 L64 94 M46 80 L82 80"
+    stroke="#24323A"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+
+  <!-- 3 -->
+  <path
+    d="
+      M92 66
+      Q110 60 110 74
+      Q110 82 100 84
+      Q112 86 112 100
+      Q112 112 92 104
+    "
+    stroke="#24323A"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+           <!-- More vertical NOT slash -->
+  <line
+    x1="130"  y1="30"
+    x2="30" y2="130"
+    stroke="#C62828"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+</svg>

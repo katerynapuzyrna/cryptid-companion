@@ -1,0 +1,29 @@
+<RCC>
+  <qresource prefix="/">
+    <file>assets/icons/app_icon.png</file>
+    <file>assets/icons/app_icon.ico</file>
+    <file>assets/icons/cryptid.png</file>
+    <file>assets/icons/chevron_down.svg</file>
+    <file>assets/icons/close.svg</file>
+    <file>assets/icons/cancel_circle.svg</file>
+    <file>assets/icons/ok_circle.svg</file>
+    <file>assets/icons/chevron_down_disabled.svg</file>
+    <file>assets/icons/help_question_icon.svg</file>
+    <file>assets/icons/floppy-disk-save-button-svgrepo-com.svg</file>
+    <file>assets/icons/edit-button-svgrepo-com.svg</file>
+    <file>assets/icons/delete-button-svgrepo-com.svg</file>
+    <file>assets/icons/status_error.svg</file>
+    <file>assets/icons/status_ok.svg</file>
+    <file>assets/icons/status_warning.svg</file>
+    <file>assets/icons/toggle_off_disabled.svg</file>
+    <file>assets/icons/toggle_on_disabled.svg</file>
+    <file>assets/icons/toggle_off.svg</file>
+    <file>assets/icons/toggle_on.svg</file>
+    <file>assets/icons/undo.svg</file>
+    <file>assets/icons/players/light green.svg</file>
+    <file>assets/icons/players/light blue.svg</file>
+    <file>assets/icons/players/purple.svg</file>
+    <file>assets/icons/players/orange.svg</file>
+    <file>assets/icons/players/red.svg</file>
+  </qresource>
+</RCC>

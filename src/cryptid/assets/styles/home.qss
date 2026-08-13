@@ -1,0 +1,81 @@
+/* =========================
+   Home page
+   ========================= */
+
+QScrollArea#homeScroll {
+    background: transparent;
+    border: none;
+}
+
+QWidget#homeScrollContent {
+    background: transparent;
+}
+
+QLabel#homeIntro,
+QLabel#homeAbout {
+    background: transparent;
+    color: #182022;
+}
+
+QFrame#homeIntroCard,
+QFrame#homeAboutCard {
+    background: #f9fbfc;
+    border: 1px solid #d8e0e6;
+    border-radius: 12px;
+}
+
+QFrame#homeNavCard {
+    background: #f9fbfc;
+    border: 1px solid #d8e0e6;
+    border-radius: 12px;
+}
+
+QFrame#homeNavCard:hover {
+    background: #e8f4f2;
+    border: 1px solid #b9d9d6;
+}
+
+QFrame#homeNavCard:pressed,
+QFrame#homeNavCard[pressed="true"] {
+    background: #dceeea;
+    border: 1px solid #a8cdc8;
+}
+
+QLabel#homeNavCardTitle {
+    background: transparent;
+    color: #182022;
+    font-size: 11.5pt;
+    font-weight: 600;
+}
+
+QLabel#homeNavCardBody {
+    background: transparent;
+    color: #4a5560;
+    font-size: 9.5pt;
+}
+
+QLabel#homeNavCardComingSoon {
+    background: transparent;
+    color: #4a5560;
+    font-size: 9.5pt;
+    font-weight: 600;
+}
+
+QLabel#homeNavCardComingSoonIcon {
+    background: transparent;
+}
+
+QLabel#pageComingSoon {
+    background: transparent;
+    color: #4a5560;
+    font-size: 11pt;
+    font-weight: 600;
+}
+
+QLabel#pageComingSoonIcon {
+    background: transparent;
+}
+
+QLabel#homeNavCardIcon {
+    background: transparent;
+}

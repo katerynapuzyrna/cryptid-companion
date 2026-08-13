@@ -1,0 +1,2 @@
+# Optional: pin versions for reproducible builds
+pyinstaller>=6.0

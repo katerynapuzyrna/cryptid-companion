@@ -1,0 +1,56 @@
+/* =========================
+   ComboBox
+   ========================= */
+
+QComboBox {
+    background: #ffffff;
+    border: 1px solid #d6dde2;
+    border-radius: 12px;
+    padding: 4px 12px;
+    padding-right: 10px;
+    min-height: 30px;
+    color: #182022;
+}
+
+QComboBox[isPlaceholder="true"] {
+    color: #6b7580;
+}
+
+QComboBox:hover { border-color: #2f7d77; }
+QComboBox:focus { border-color: #2f7d77; }
+
+QComboBox:disabled {
+    background: #eef2f4;
+    border: 1px solid #dde5ea;
+    color: #98a4ac;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: right;
+    width: 32px;
+    border-left: 1px solid #e2e8ec;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background: #ffffff;
+}
+
+QComboBox::drop-down:disabled {
+    background: #eef2f4;
+}
+
+QComboBox::down-arrow {
+    image: url(:/assets/icons/chevron_down.svg);
+    width: 12px;
+    height: 12px;
+}
+
+QComboBox::down-arrow:disabled {
+    image: url(:/assets/icons/chevron_down_disabled.svg);
+    width: 12px;
+    height: 12px;
+}
+
+
+
+

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg opacity="0.65" width="54" height="28" viewBox="0 0 54 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Capsule -->
+  <rect x="0.5" y="0.5" width="53" height="27" rx="13.5"
+        fill="#E3E9ED" stroke="#CFD8DE" stroke-width="1"/>
+  <!-- Knob (left) -->
+  <circle cx="14" cy="14" r="12" fill="#f9fbfc"/>
+</svg>

@@ -1,0 +1,63 @@
+/* =========================
+   Rounded combo popup
+   ========================= */
+
+QFrame#roundedComboPopup {
+    background: #ffffff;
+    border: 1px solid #d6dde2;
+    border-radius: 10px;
+}
+
+QFrame#roundedComboPopup QListWidget {
+    background: transparent;
+    border: none;
+    outline: 0;
+    padding: 8px 8px 8px 8px;
+    selection-background-color: #2f7d77;
+    selection-color: #ffffff;
+}
+
+QFrame#roundedComboPopup QListWidget::item {
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+QFrame#roundedComboPopup QListWidget::item:hover {
+    background: #f5f7f9;
+}
+
+QFrame#roundedComboPopup QListWidget::item:selected {
+    background: #d8ecea;
+    color: #1f5d59;
+}
+
+QFrame#roundedComboPopup QScrollBar:vertical {
+    background: transparent;
+    width: 10px;
+    margin: 6px 0 6px 0px;
+    border: none;
+}
+
+QFrame#roundedComboPopup QScrollBar::add-line:vertical,
+QFrame#roundedComboPopup QScrollBar::sub-line:vertical {
+    height: 0px;
+    width: 0px;
+    max-height: 0px;
+    border: none;
+    background: transparent;
+}
+
+QFrame#roundedComboPopup QScrollBar::handle:vertical {
+    background: #d6dde2;
+    border-radius: 5px;
+    min-height: 24px;
+}
+
+QFrame#roundedComboPopup QScrollBar::handle:vertical:hover {
+    background: #c8d1d8;
+}
+
+QFrame#roundedComboPopup QScrollBar::add-page:vertical,
+QFrame#roundedComboPopup QScrollBar::sub-page:vertical {
+    background: transparent;
+}

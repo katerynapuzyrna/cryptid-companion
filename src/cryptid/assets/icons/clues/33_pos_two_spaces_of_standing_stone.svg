@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="160"
+     height="160"
+     viewBox="0 0 160 160">
+
+  <defs>
+    <!-- dot pattern -->
+    <pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="2" fill="#9aa3ab"/>
+    </pattern>
+  </defs>
+
+  <!-- mathematically correct regular octagon -->
+  <polygon
+    points="
+      80,14
+      126.67,33.33
+      146,80
+      126.67,126.67
+      80,146
+      33.33,126.67
+      14,80
+      33.33,33.33
+    "
+    fill="url(#dots)"
+  />
+
+  <!-- border -->
+  <polygon
+    points="
+      80,14
+      126.67,33.33
+      146,80
+      126.67,126.67
+      80,146
+      33.33,126.67
+      14,80
+      33.33,33.33
+    "
+    fill="none"
+    stroke="#9aa3ab"
+    stroke-width="4"
+    stroke-linejoin="round"
+  />
+<!-- + -->
+  <path
+    d="M64 66 L64 94 M46 80 L82 80"
+    stroke="#24323A"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+
+  <!-- 2 -->
+  <path
+    d="
+      M92 66
+      Q108 58 114 68
+      Q118 78 106 86
+      L98 92
+      L98 98
+      L116 98
+    "
+    stroke="#24323A"
+    stroke-width="10"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+</svg>

@@ -1,0 +1,48 @@
+/* =========================
+   Sidebar (left menu)
+   ========================= */
+
+QFrame#sidebarFrame {
+    background: #f9fbfc;
+    border: 1px solid #d6dde2;
+    border-radius: 14px;
+}
+
+
+/* Navigation list (icons left of text; Fusion + QSS need explicit icon-size) */
+QListWidget#navList {
+    /* Match sidebarFrame so row spacing/margins do not show a different strip color. */
+    background: #f9fbfc;
+    border: none;
+    outline: 0;
+    padding: 6px 6px 6px 0;
+    icon-size: 29px;
+    /* Avoid a second selection layer on the icon; row fill is painted in _NavListItemDelegate. */
+    show-decoration-selected: 0;
+}
+
+QListWidget#navList::item {
+    padding: 10px 12px 10px 10px;
+    /* Vertical margin + list spacing produced faint bands between rows. */
+    margin: 2px 4px;
+    border: none;
+    border-radius: 10px;
+    color: #182022;
+}
+
+/*
+ * Hover / selected fills (full row, including icon) are painted in _NavListItemDelegate.
+ * Keep QSS backgrounds transparent so Qt does not stack a second fill.
+ */
+QListWidget#navList::item:hover {
+    background: transparent;
+}
+
+QListWidget#navList::item:selected,
+QListWidget#navList::item:selected:!active {
+    background: transparent;
+    border: none;
+    color: #1f5d59;
+    font-weight: 700;
+}
+

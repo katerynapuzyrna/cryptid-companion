@@ -1,0 +1,32 @@
+/* =========================
+   QToolTip (native, e.g. clue icon grid)
+   ========================= */
+
+QToolTip {
+    background: #d8ecea;
+    color: #182022;
+    border: 1px solid #b9d9d6;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: "Segoe UI";
+    font-size: 10.5pt;
+}
+
+/* =========================
+   Rounded tooltip (custom QFrame)
+   ========================= */
+
+QFrame#roundedTooltip {
+    background: #d8ecea;
+    color: #182022;
+    border: 1px solid #b9d9d6;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: "Segoe UI";
+    font-size: 10.5pt;
+}
+
+QFrame#roundedTooltip QLabel {
+    background: transparent;
+    border: none;
+}

@@ -1,0 +1,57 @@
+/* =========================
+   Tutorials page
+   ========================= */
+
+QScrollArea#tutorialsScroll {
+    background: transparent;
+    border: none;
+}
+
+QWidget#tutorialsScrollContent,
+QWidget#tutorialsCards {
+    background: transparent;
+}
+
+QFrame#tutorialCard,
+QFrame#tutorialInnerCard {
+    background: #f9fbfc;
+    border: 1px solid #d8e0e6;
+    border-radius: 12px;
+}
+
+QLabel#tutorialCardTitle {
+    background: transparent;
+    color: #182022;
+    font-size: 12.5pt;
+    font-weight: 600;
+}
+
+QLabel#tutorialInnerCardTitle {
+    background: transparent;
+    color: #182022;
+    font-size: 11pt;
+    font-weight: 600;
+}
+
+QLabel#tutorialCardBody,
+QLabel#tutorialCaption {
+    background: transparent;
+    color: #4a5560;
+    font-size: 10pt;
+}
+
+QLabel#tutorialSectionTitle {
+    background: transparent;
+    color: #182022;
+    font-size: 10.5pt;
+    font-weight: 600;
+}
+
+QLabel#tutorialPreviewIcon {
+    background: transparent;
+}
+
+QComboBox#tutorialClueCombo {
+    min-width: 0px;
+    height: 30px;
+}

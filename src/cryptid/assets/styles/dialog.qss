@@ -1,0 +1,60 @@
+/* =========================
+   Dialog (QMessageBox, QDialog)
+   ========================= */
+
+QMessageBox,
+QDialog {
+    background: #f9fbfc;
+    color: #182022;
+    font-family: "Segoe UI";
+    font-size: 10.5pt;
+    border: 1px solid #d8e0e6;
+}
+
+QMessageBox QLabel,
+QDialog QLabel {
+    color: #182022;
+    background: transparent;
+}
+
+QMessageBox QPushButton,
+QDialog QPushButton {
+    background: #ffffff;
+    border: 1px solid #d6dde2;
+    border-radius: 12px;
+    padding: 9px 8px;
+    color: #182022;
+    font-weight: 600;
+    min-width: 55px;
+}
+
+QMessageBox QPushButton:hover,
+QDialog QPushButton:hover {
+    background: #f5f7f9;
+    border-color: #c8d1d8;
+}
+
+QMessageBox QPushButton:pressed,
+QDialog QPushButton:pressed {
+    background: #e9eef2;
+    border-color: #bcc7cf;
+}
+
+QMessageBox QPushButton[primary="true"],
+QDialog QPushButton[primary="true"] {
+    background: #2f7d77;
+    border: 1px solid #256a66;
+    color: #ffffff;
+}
+
+QMessageBox QPushButton[primary="true"]:hover,
+QDialog QPushButton[primary="true"]:hover {
+    background: #256a66;
+    border-color: #1f5d59;
+}
+
+QMessageBox QPushButton[primary="true"]:pressed,
+QDialog QPushButton[primary="true"]:pressed {
+    background: #1f5d59;
+    border-color: #1a524f;
+}

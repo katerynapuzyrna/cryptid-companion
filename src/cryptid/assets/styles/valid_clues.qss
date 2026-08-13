@@ -1,0 +1,45 @@
+/* =========================
+   Valid clues section (Deduction page)
+   ========================= */
+
+/* Clue icon grid cells - same style as structures region */
+QWidget#clueIconCell {
+    background: #ffffff;
+    border: 1px solid #d6dde2;
+    border-radius: 12px;
+    padding: 4px;
+}
+
+QWidget#validCluesSection {
+    background: #f9fbfc;
+    border: 1px solid #d6dde2;
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 0;
+}
+
+QWidget#validCluesCol {
+    background: #ffffff;
+    border: 1px solid #e8ecf0;
+    border-radius: 8px;
+    }
+
+QLabel#validCluesHeader,
+QLabel#chipPlayerLabel {
+    font-family: "Segoe UI";
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: #182022;
+}
+
+QWidget#validCluesBody {
+    background: transparent;
+}
+
+QLabel#validCluesItem {
+    font-family: "Segoe UI";
+    font-size: 10.5pt;
+    color: #182022;
+    padding: 0;
+    margin: 4px 4px;
+}

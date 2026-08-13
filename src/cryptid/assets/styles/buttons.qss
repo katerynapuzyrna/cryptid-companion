@@ -1,0 +1,140 @@
+/* =========================
+   Buttons
+   ========================= */
+
+/* Neutral */
+QPushButton {
+    background: #ffffff;
+    border: 1px solid #d6dde2;
+    border-radius: 12px;
+    padding: 9px 16px;
+    color: #182022;
+    font-weight: 600;
+}
+
+QPushButton:hover {
+    background: #f5f7f9;
+    border-color: #c8d1d8;
+}
+
+QPushButton:pressed {
+    background: #e9eef2;
+    border-color: #bcc7cf;
+}
+
+QPushButton:disabled {
+    background: #eef2f4;
+    border-color: #dde5ea;
+    color: #98a4ac;
+}
+
+/* Secondary (outline / non-primary; same look as neutral, distinct property for QSS hooks) */
+QPushButton[secondary="true"] {
+    background: #ffffff;
+    border: 1px solid #d6dde2;
+    border-radius: 12px;
+    padding: 9px 16px;
+    color: #182022;
+    font-weight: 600;
+}
+
+QPushButton[secondary="true"]:hover {
+    background: #f5f7f9;
+    border-color: #c8d1d8;
+}
+
+QPushButton[secondary="true"]:pressed {
+    background: #e9eef2;
+    border-color: #bcc7cf;
+}
+
+QPushButton[secondary="true"]:disabled {
+    background: #eef2f4;
+    border-color: #dde5ea;
+    color: #98a4ac;
+}
+
+/* Primary */
+QPushButton[primary="true"] {
+    background: #2f7d77;
+    border: 1px solid #256a66;
+    color: #ffffff;
+}
+
+QPushButton[primary="true"]:hover {
+    background: #256a66;
+    border-color: #1f5d59;
+}
+
+QPushButton[primary="true"]:pressed {
+    background: #1f5d59;
+    border-color: #1a524f;
+}
+
+QPushButton[primary="true"]:disabled {
+    background: #cfd6d6;
+    border-color: #cfd6d6;
+    color: #ffffff;
+}
+
+/* Radio buttons (e.g. Play Hotseat Question / Search) */
+QRadioButton {
+    spacing: 5px;
+    color: #182022;
+    background: transparent;
+    font-weight: 400;
+}
+
+QRadioButton:disabled {
+    color: #98a4ac;
+}
+
+QRadioButton::indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    border: 1px solid #c8d1d8;
+    background: #ffffff;
+}
+
+QRadioButton::indicator:hover {
+    border-color: #2f7d77;
+}
+
+QRadioButton::indicator:checked {
+    border: 1px solid #2f7d77;
+    background: qradialgradient(
+        cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
+        stop: 0 #ffffff,
+        stop: 0.35 #ffffff,
+        stop: 0.36 #2f7d77,
+        stop: 1 #2f7d77
+    );
+}
+
+QRadioButton::indicator:checked:hover {
+    border: 1px solid #256a66;
+    background: qradialgradient(
+        cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
+        stop: 0 #ffffff,
+        stop: 0.35 #ffffff,
+        stop: 0.36 #256a66,
+        stop: 1 #256a66
+    );
+}
+
+QRadioButton::indicator:disabled {
+    border-color: #dde5ea;
+    background: #eef2f4;
+}
+
+QRadioButton::indicator:checked:disabled {
+    border: 1px solid #bcc7cf;
+    background: qradialgradient(
+        cx: 0.5, cy: 0.5, radius: 0.5, fx: 0.5, fy: 0.5,
+        stop: 0 #eef2f4,
+        stop: 0.35 #eef2f4,
+        stop: 0.36 #98a4ac,
+        stop: 1 #98a4ac
+    );
+}

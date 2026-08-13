@@ -1,0 +1,136 @@
+/* =========================
+   Map source segment (Build own / Select from list)
+   ========================= */
+
+QWidget#mapSourceSegment {
+    padding: 0;
+    border: none;
+    background: #f2f4f6;
+}
+
+QPushButton#btnMapBuild,
+QPushButton#btnMapSelect {
+    margin: 0;
+    border-radius: 0;
+    border: 1px solid #d6dde2;
+    padding: 9px 16px;
+}
+
+QPushButton#btnMapBuild {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: none;
+}
+
+QPushButton#btnMapSelect {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+QPushButton#btnMapBuild:hover,
+QPushButton#btnMapSelect:hover {
+    background: #f5f7f9;
+    border-color: #c8d1d8;
+}
+
+QPushButton#btnMapBuild:checked,
+QPushButton#btnMapSelect:checked {
+    background: #2f7d77;
+    border-color: #256a66;
+    color: #ffffff;
+}
+
+QPushButton#btnMapBuild:checked:hover,
+QPushButton#btnMapSelect:checked:hover {
+    background: #256a66;
+    border-color: #1f5d59;
+}
+
+QPushButton#btnMapBuild:checked:pressed,
+QPushButton#btnMapSelect:checked:pressed {
+    background: #1f5d59;
+    border-color: #1a524f;
+}
+
+QPushButton#btnMapSelect:checked {
+    border-left: 1px solid #256a66;
+}
+
+QPushButton#btnMapBuild:checked {
+    border-right: 1px solid #256a66;
+}
+
+/* Maps Library: three-part segment (same visual language as Build / Load map) */
+QWidget#mapsLibSegment {
+    padding: 0;
+    border: none;
+    background: #f2f4f6;
+}
+
+QPushButton#btnMapsLibCreate,
+QPushButton#btnMapsLibPredefined,
+QPushButton#btnMapsLibCustom {
+    margin: 0;
+    border-radius: 0;
+    border: 1px solid #d6dde2;
+    padding: 9px 16px;
+}
+
+QPushButton#btnMapsLibCreate {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: none;
+}
+
+QPushButton#btnMapsLibPredefined {
+    border-left: none;
+    border-right: none;
+}
+
+QPushButton#btnMapsLibCustom {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: none;
+}
+
+QPushButton#btnMapsLibCreate:hover,
+QPushButton#btnMapsLibPredefined:hover,
+QPushButton#btnMapsLibCustom:hover {
+    background: #f5f7f9;
+    border-color: #c8d1d8;
+}
+
+QPushButton#btnMapsLibCreate:checked,
+QPushButton#btnMapsLibPredefined:checked,
+QPushButton#btnMapsLibCustom:checked {
+    background: #2f7d77;
+    border-color: #256a66;
+    color: #ffffff;
+}
+
+QPushButton#btnMapsLibCreate:checked:hover,
+QPushButton#btnMapsLibPredefined:checked:hover,
+QPushButton#btnMapsLibCustom:checked:hover {
+    background: #256a66;
+    border-color: #1f5d59;
+}
+
+QPushButton#btnMapsLibCreate:checked:pressed,
+QPushButton#btnMapsLibPredefined:checked:pressed,
+QPushButton#btnMapsLibCustom:checked:pressed {
+    background: #1f5d59;
+    border-color: #1a524f;
+}
+
+QPushButton#btnMapsLibCreate:checked {
+    border-right: 1px solid #256a66;
+}
+
+QPushButton#btnMapsLibPredefined:checked {
+    border-left: 1px solid #256a66;
+    border-right: 1px solid #256a66;
+}
+
+QPushButton#btnMapsLibCustom:checked {
+    border-left: 1px solid #256a66;
+}

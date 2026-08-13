@@ -1,0 +1,10 @@
+/* =========================
+   Card containers
+   ========================= */
+
+QWidget[card="true"] {
+    background: #f9fbfc;
+    border: 1px solid #d8e0e6;
+    border-radius: 16px;
+    padding: 6px;
+}

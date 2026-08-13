@@ -1,0 +1,55 @@
+/* =========================
+   Rule combinations table (Deduction page)
+   ========================= */
+
+QTableWidget {
+    background: #f9fbfc;
+    border: 1px solid #d8e0e6;
+    border-radius: 16px;
+    gridline-color: #e8ecf0;
+    color: #182022;
+}
+
+QTableWidget::item {
+    padding: 8px 10px;
+    color: #182022;
+    border-radius: 0;
+}
+
+QTableWidget::item:hover {
+    background: #f2f4f6;
+}
+
+QTableWidget::item:selected {
+    background: #d8ecea;
+    color: #182022;
+}
+
+QTableWidget QHeaderView::section {
+    background: #f2f4f6;
+    color: #182022;
+    padding: 10px 12px;
+    border: none;
+    border-bottom: 1px solid #d8e0e6;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Top-left of the header (e.g. Round) — matches table border-radius when
+   the vertical header / corner button is hidden. */
+QTableWidget QHeaderView::section:first {
+    border-top-left-radius: 16px;
+}
+
+QTableWidget QAbstractButton {
+    background: #f2f4f6;
+    border: none;
+    border-bottom: 1px solid #d8e0e6;
+    border-right: 1px solid #d8e0e6;
+    border-top-left-radius: 16px;
+}
+
+QTableWidget QHeaderView::section:last {
+    border-top-right-radius: 16px;
+}
+

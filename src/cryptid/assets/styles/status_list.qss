@@ -1,0 +1,78 @@
+/* =========================
+   Status list (Solve page)
+   ========================= */
+
+QListWidget#statusList {
+    background: #ffffff;
+    border: 1px solid #d6dde2;
+    border-radius: 12px;
+    padding: 6px 6px;
+    outline: 0;
+    color: #182022;
+}
+
+QListWidget#statusList::item {
+    padding: 8px 4px;
+    margin: 2px 0;
+    border-radius: 8px;
+    color: #182022;
+}
+
+QListWidget#statusList::item:hover,
+QListWidget#statusList::item:selected,
+QListWidget#statusList::item:pressed {
+    color: #182022;
+    background: transparent;
+}
+
+QLabel#lblStatus {
+      font-weight: 600;
+}
+
+/* Maps Library create-mode: header row + two status lines (see MapsLibraryStatusManager) */
+QListWidget#mapsLibStatusList {
+    background: #ffffff;
+    border: 1px solid #d6dde2;
+    border-radius: 10px;
+    padding: 2px 4px;
+    outline: 0;
+    color: #182022;
+}
+
+QListWidget#mapsLibStatusList::item {
+    padding: 4px 2px;
+    margin: 0;
+    border-radius: 6px;
+    color: #182022;
+}
+
+QListWidget#mapsLibStatusList::item:hover,
+QListWidget#mapsLibStatusList::item:selected,
+QListWidget#mapsLibStatusList::item:pressed {
+    color: #182022;
+    background: transparent;
+}
+
+/* Maps Library custom-map inline edit (same as mapsLibStatusList) */
+QListWidget#mapsLibCustomEditStatusList {
+    background: #ffffff;
+    border: 1px solid #d6dde2;
+    border-radius: 10px;
+    padding: 2px 4px;
+    outline: 0;
+    color: #182022;
+}
+
+QListWidget#mapsLibCustomEditStatusList::item {
+    padding: 4px 2px;
+    margin: 0;
+    border-radius: 6px;
+    color: #182022;
+}
+
+QListWidget#mapsLibCustomEditStatusList::item:hover,
+QListWidget#mapsLibCustomEditStatusList::item:selected,
+QListWidget#mapsLibCustomEditStatusList::item:pressed {
+    color: #182022;
+    background: transparent;
+}
