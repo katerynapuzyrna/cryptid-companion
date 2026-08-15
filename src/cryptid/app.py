@@ -29,6 +29,7 @@ def main():
     cryptid_app = CryptidApp()
     cryptid_app.window.setWindowIcon(app.windowIcon())
     cryptid_app.window.show()
+    app.processEvents()
     sys.exit(app.exec())
 
 

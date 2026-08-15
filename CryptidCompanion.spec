@@ -1,5 +1,9 @@
 # -*- mode: python ; coding: utf-8 -*-
-"""PyInstaller spec: single-file (--onefile) GUI build for CryptidCompanion (PySide6)."""
+"""PyInstaller spec: onedir GUI build for CryptidCompanion (PySide6).
+
+Onedir avoids extracting the full bundle to %TEMP% on every launch (much faster
+startup than --onefile). Ship dist/CryptidCompanion/ as a zip for releases.
+"""
 from pathlib import Path
 
 from PyInstaller.utils.hooks import collect_dynamic_libs
@@ -37,17 +41,13 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.zipfiles,
-    a.datas,
     [],
+    exclude_binaries=True,
     name="CryptidCompanion",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=True,
-    upx_exclude=[],
-    runtime_tmpdir=None,
+    upx=False,
     console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
@@ -55,4 +55,15 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     icon=str(CRYPTID / "assets" / "icons" / "app_icon.ico"),
+)
+
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=False,
+    upx_exclude=[],
+    name="CryptidCompanion",
 )

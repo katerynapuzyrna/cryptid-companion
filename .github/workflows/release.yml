@@ -55,13 +55,19 @@ jobs:
           pip install -r requirements.txt
           pip install -r requirements-build.txt
 
+      - name: Pre-generate map thumbnails
+        run: python tools/generate_map_thumbnails.py --force
+
       - name: Build executable
         run: python -m PyInstaller --noconfirm --clean CryptidCompanion.spec
+
+      - name: Zip release folder
+        run: Compress-Archive -Path dist/CryptidCompanion -DestinationPath dist/CryptidCompanion-win.zip -Force
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/CryptidCompanion.exe
+          files: dist/CryptidCompanion-win.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

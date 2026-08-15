@@ -33,7 +33,6 @@ from settings.strings import (
     RESET_CONFIRM_MSG,
     RESET_CONFIRM_TITLE,
 )
-from ui.pages.hotseat_board import HotseatBoardPanel
 from ui.shared.widgets import (
     add_clear_button_inside_combo,
     refresh_player_color_combos,
@@ -65,7 +64,8 @@ class PlayHotseatPageController:
         self._map_mode_group: QButtonGroup | None = None
         self.btnHotseatStartGame: QPushButton | None = None
         self._stack: QStackedWidget | None = None
-        self._board_panel: HotseatBoardPanel | None = None
+        self._board_panel = None
+        self._setup_page: QWidget | None = None
 
     def setup(self) -> None:
         self.cbHotseatNumPlayers = self._page.findChild(QComboBox, "cbHotseatNumPlayers")
@@ -270,18 +270,13 @@ class PlayHotseatPageController:
         else:
             setup_lay.addStretch(0)
         setup_lay.addWidget(row_btn, 0)
-
-        self._board_panel = HotseatBoardPanel(self._page)
-        self._board_panel.setSizePolicy(
-            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding
-        )
+        self._setup_page = setup_page
 
         self._stack = QStackedWidget(self._page)
         self._stack.setSizePolicy(
             QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding
         )
         self._stack.addWidget(setup_page)
-        self._stack.addWidget(self._board_panel)
 
         def _stack_changed(_i: int) -> None:
             fn = getattr(self, "_breadcrumb_refresh", None)
@@ -291,6 +286,17 @@ class PlayHotseatPageController:
         self._stack.currentChanged.connect(_stack_changed)
         main_lay.insertWidget(1, self._stack, 1)
 
+    def _ensure_board_panel(self) -> None:
+        """Create the gameplay board on first Start Game (defers heavy hotseat_board import)."""
+        if self._board_panel is not None or self._stack is None:
+            return
+        from ui.pages.hotseat_board import HotseatBoardPanel
+
+        self._board_panel = HotseatBoardPanel(self._page)
+        self._board_panel.setSizePolicy(
+            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding
+        )
+        self._stack.addWidget(self._board_panel)
         self._board_panel.session_ended.connect(self._on_hotseat_session_ended)
 
     def _on_hotseat_session_ended(self) -> None:
@@ -523,7 +529,10 @@ class PlayHotseatPageController:
         return None
 
     def _on_start_game(self) -> None:
-        if self._board_panel is None or self._stack is None:
+        if self._stack is None:
+            return
+        self._ensure_board_panel()
+        if self._board_panel is None:
             return
 
         n = self._player_count()

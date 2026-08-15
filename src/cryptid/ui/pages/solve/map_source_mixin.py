@@ -70,6 +70,7 @@ class SolveMapSourceMixin:
     def _on_map_source_mode_changed(self) -> None:
         is_select = self.btnMapSelect.isChecked()
         if is_select:
+            self._ensure_map_cards_loaded()
             self._build_tab_solve_active = False
             self.mapListCardsContainer.setVisible(True)
             mc = self.selectContent.findChild(QWidget, "selectControls") if self.selectContent else None

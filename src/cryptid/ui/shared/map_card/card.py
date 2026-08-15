@@ -3,8 +3,8 @@ from __future__ import annotations
 
 from typing import Any
 
-from PySide6.QtCore import Qt, QRectF, QSize, Signal
-from PySide6.QtGui import QPainter, QImage, QPixmap, QColor, QIcon
+from PySide6.QtCore import Qt, QSize, Signal
+from PySide6.QtGui import QPixmap, QColor, QIcon
 from PySide6.QtWidgets import (
     QWidget,
     QVBoxLayout,
@@ -22,7 +22,7 @@ from PySide6.QtWidgets import (
 
 from logic.clues import get_clues_for_map
 from logic.conditions import all_condition_labels
-from settings.config import ASSETS_DIR, DATA_DIR
+from settings.config import ASSETS_DIR
 from ui.shared.widgets import (
     ComboBoxWithPopupAbove,
     setup_player_color_combo,
@@ -33,18 +33,21 @@ from ui.shared.widgets import (
 )
 
 from .blur import _create_blurred_text_pixmap
-from .scene import _get_preview_canvas_size, build_map_preview_scene
+from .scene import _get_preview_canvas_size
+from .thumbnail_cache import (
+    render_map_thumbnail_png,
+    thumbnail_path_for_map_id,
+)
 from .views import MapCanvasPreviewWidget
 
 # Tracks in-flight renders (predefined + custom maps share map_thumbnails_v* / {id}.png).
 _THUMB_GENERATION_IN_PROGRESS: set[Any] = set()
-_THUMBNAIL_VERSION: int = 4
 
 
 def invalidate_map_thumbnail_on_disk(map_id: int) -> None:
     """Remove cached PNG so cards re-render from map JSON after geometry/content changes."""
     _THUMB_GENERATION_IN_PROGRESS.discard(map_id)
-    path = DATA_DIR / f"map_thumbnails_v{_THUMBNAIL_VERSION}" / f"{map_id}.png"
+    path = thumbnail_path_for_map_id(map_id)
     try:
         path.unlink(missing_ok=True)
     except OSError:
@@ -248,8 +251,7 @@ class MapCard(QFrame):
         map_id = self.map_data.get("id")
         if map_id is None:
             return None
-        # Predefined (maps.json) and custom (custom_maps.json) both use numeric ids; same PNG cache dir.
-        return DATA_DIR / f"map_thumbnails_v{_THUMBNAIL_VERSION}" / f"{map_id}.png"
+        return thumbnail_path_for_map_id(map_id)
 
     def _set_thumbnail_pixmap(self, pixmap: QPixmap) -> None:
         if pixmap.isNull():
@@ -294,31 +296,11 @@ class MapCard(QFrame):
 
         _THUMB_GENERATION_IN_PROGRESS.add(map_id)
         try:
-            scene, _, _ = build_map_preview_scene(self.map_data)
-            src = scene.sceneRect()
-            # 1:1 with sceneRect (same pixel size as live map preview) so cosmetic dashed
-            # strokes match the board; avoid 2× render + smooth downscale blurring dashes.
-            img_w = max(1, int(round(src.width())))
-            img_h = max(1, int(round(src.height())))
-            img = QImage(img_w, img_h, QImage.Format.Format_ARGB32_Premultiplied)
-            img.fill(0)
-            painter = QPainter(img)
-            painter.setRenderHint(QPainter.RenderHint.Antialiasing, True)
-            painter.setRenderHint(QPainter.RenderHint.TextAntialiasing, True)
-            scene.render(painter, QRectF(0, 0, img_w, img_h), src)
-            painter.end()
-            pix = QPixmap.fromImage(img)
+            if not render_map_thumbnail_png(self.map_data, path):
+                return False
+            pix = QPixmap(str(path))
             if pix.isNull():
                 return False
-            if pix.width() != self._thumb_w or pix.height() != self._thumb_h:
-                pix = pix.scaled(
-                    self._thumb_w,
-                    self._thumb_h,
-                    Qt.AspectRatioMode.KeepAspectRatio,
-                    Qt.TransformationMode.SmoothTransformation,
-                )
-            path.parent.mkdir(parents=True, exist_ok=True)
-            pix.save(str(path), "PNG")
             self._set_thumbnail_pixmap(pix)
             self._thumb_loaded = True
             return True

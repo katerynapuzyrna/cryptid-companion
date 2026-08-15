@@ -295,8 +295,9 @@ Logic tests import from `src/cryptid` via `pythonpath` in `pytest.ini`.
 
 - **Development:** `cd src/cryptid && python app.py`
 - **Qt resources:** `resources_rc.py` is committed; regenerate with `pyside6-rcc` when `resources.qrc` changes (see README).
-- **Release:** `build_exe.bat` → PyInstaller → `dist/CryptidCompanion.exe`
-- Bundled data: `assets/` and `data/` included via `CryptidCompanion.spec`
+- **Release:** `tools/generate_map_thumbnails.py --force` then `build_exe.bat` → PyInstaller onedir → `dist/CryptidCompanion/` (zip as `CryptidCompanion-win.zip`)
+- **Startup:** Home and shell load first; other pages, map cards, and the Hotseat board load on first use
+- Bundled data: `assets/` and `data/` (including pre-generated map thumbnails) via `CryptidCompanion.spec`
 
 ---
 

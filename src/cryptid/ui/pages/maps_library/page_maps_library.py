@@ -215,7 +215,7 @@ class MapsLibraryPageController:
             maps_json_path=MAPS_JSON,
             hover_tooltip=self._app_tooltip,
         )
-        self._browse_manager.setup()
+        self._browse_cards_loaded = False
         self._browse_manager.custom_map_edit_requested.connect(self._on_custom_map_edit)
         self._browse_manager.custom_map_delete_requested.connect(self._on_custom_map_delete)
         self._browse_manager.custom_map_rename_map_name_requested.connect(
@@ -268,6 +268,12 @@ class MapsLibraryPageController:
         self._edit_session_baseline_map = None
         self._exit_custom_map_edit_ui()
 
+    def _ensure_browse_cards_loaded(self) -> None:
+        if getattr(self, "_browse_cards_loaded", False):
+            return
+        self._browse_manager.setup()
+        self._browse_cards_loaded = True
+
     def _reload_custom_maps_browse_list(self) -> None:
         """Load custom_maps.json and reset browse filters so cards are not all hidden.
 
@@ -288,6 +294,7 @@ class MapsLibraryPageController:
             self.edtMapsLibBrowseSearch.blockSignals(False)
         bm = self._browse_manager
         if bm is not None:
+            self._ensure_browse_cards_loaded()
             bm.set_maps_json_path(CUSTOM_MAPS_JSON)
 
     def _reset_create_tab_to_new_map(self) -> None:
@@ -314,14 +321,14 @@ class MapsLibraryPageController:
             self.mapsLibStack.setCurrentIndex(0)
         elif btn is self.btnMapsLibPredefined:
             self.mapsLibStack.setCurrentIndex(1)
-            # Only hide the custom inline editor (show card grid); keep _editing_custom_map_id so
-            # returning to Custom Maps restores edit mode instead of the list.
             self._exit_custom_map_edit_ui()
+            self._ensure_browse_cards_loaded()
             self._browse_manager.set_maps_json_path(MAPS_JSON)
         elif btn is self.btnMapsLibCustom:
             self.mapsLibStack.setCurrentIndex(1)
             if self._editing_custom_map_id is None:
                 self._leave_custom_map_edit_session()
+            self._ensure_browse_cards_loaded()
             self._reload_custom_maps_browse_list()
             if (
                 self._editing_custom_map_id is not None

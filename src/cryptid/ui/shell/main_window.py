@@ -1,5 +1,9 @@
 """Main window shell: loads UI, navigation, page setup."""
 from __future__ import annotations
+
+from pathlib import Path
+from typing import Callable
+
 from PySide6.QtWidgets import (
     QApplication,
     QComboBox,
@@ -55,14 +59,27 @@ from ui.shell.page_breadcrumbs import (
     segments_static,
 )
 from ui.pages.page_home import HomePageController
-from ui.pages.page_tutorials import TutorialsPageController
-from ui.pages.page_solve import SolvePageController
-from ui.pages.page_deduction import DeductionPageController
-from ui.pages.maps_library.page_maps_library import MapsLibraryPageController
-from ui.pages.page_play_hotseat import PlayHotseatPageController
 
 
 _PLACEHOLDER_COMING_SOON_ICON_PX = 24
+
+# Nav routes whose full UI + controller are built on first visit (not at app startup).
+_LAZY_NAV_ROUTES = frozenset(
+    {
+        "Solver Tool",
+        "Deduction Mode",
+        "Tutorials",
+        "Maps Library",
+        "Play Hotseat",
+    }
+)
+
+
+def _make_lazy_page_placeholder(object_name: str) -> QWidget:
+    """Lightweight stack slot until the real .ui page is loaded."""
+    w = QWidget()
+    w.setObjectName(object_name)
+    return w
 
 
 def _make_nav_placeholder_page(_title: str, object_name: str) -> tuple[QWidget, QLabel]:
@@ -187,14 +204,11 @@ class _NavListItemDelegate(QStyledItemDelegate):
 
             painter.fillPath(sel_shape, self._SEL_BG)
 
-            # Left accent = same rounded rect, clipped to a left strip (continues border radius).
             strip = QPainterPath()
             strip.addRect(
                 QRectF(row_rf.left(), row_rf.top(), float(self._ACCENT_W), row_rf.height())
             )
             painter.fillPath(sel_shape.intersected(strip), self._SEL_ACCENT)
-
-            # No full outline stroke: top/bottom segments read as dividers between nav rows.
         elif hover:
             painter.setPen(Qt.PenStyle.NoPen)
             painter.setBrush(self._HOVER_BG)
@@ -243,7 +257,6 @@ class _NavListItemDelegate(QStyledItemDelegate):
                 tw = painter.fontMetrics().horizontalAdvance(label)
                 bx = text_rect.left() + tw + self._UNDER_DEV_GAP
                 by = text_rect.top() + (text_rect.height() - self._under_dev_pm.height()) // 2
-                # Keep badge inside the row; skip if it would clip past the right edge.
                 if bx + self._under_dev_pm.width() <= opt.rect.right() - 4:
                     painter.drawPixmap(bx, by, self._under_dev_pm)
 
@@ -252,7 +265,6 @@ class _NavListItemDelegate(QStyledItemDelegate):
         option.showDecorationSelected = False
 
 
-# QListWidget row icon size (24 * 1.2); keep QSS icon-size and .ui iconSize in sync.
 _NAV_LIST_ICON_PX = 29
 
 
@@ -302,12 +314,19 @@ class CryptidApp:
     """Main window shell, navigation, page wiring."""
 
     def __init__(self):
-        loader = ComboPopupUiLoader()
+        self._ui_loader = ComboPopupUiLoader()
+        self._loaded_routes: set[str] = set()
+        self._tutorials_page = None
+        self._solve_page = None
+        self._deduction_page = None
+        self._maps_library_page = None
+        self._play_hotseat_page = None
+
         ui_path = str(UI_PATH.resolve())
         f = QFile(ui_path)
         if not f.open(QIODevice.OpenModeFlag.ReadOnly):
             raise RuntimeError(f"Cannot open UI file: {ui_path} - {f.errorString()}")
-        self.window = loader.load(f, None)
+        self.window = self._ui_loader.load(f, None)
         f.close()
         if self.window is None:
             raise RuntimeError("Failed to load main_window.ui")
@@ -318,28 +337,22 @@ class CryptidApp:
         if pages_stack is None:
             raise RuntimeError("pagesStack not found in main_window.ui")
 
-        def load_page(path, name: str):
-            p = str(path.resolve())
-            f = QFile(p)
-            if not f.open(QIODevice.OpenModeFlag.ReadOnly):
-                raise RuntimeError(f"Cannot open UI file: {p}")
-            w = loader.load(f, None)
-            f.close()
-            if w is None:
-                raise RuntimeError(f"Failed to load {name}")
-            pages_stack.addWidget(w)
-            return w
+        # Home is the only full page loaded at startup; others are lightweight placeholders.
+        self._load_page_ui(PAGE_MAIN_MENU_UI, "page_main_menu.ui", pages_stack)
+        self.pageDeduction = _make_lazy_page_placeholder("pageDeduction")
+        pages_stack.addWidget(self.pageDeduction)
+        self.pageSolve = _make_lazy_page_placeholder("pageSolve")
+        pages_stack.addWidget(self.pageSolve)
+        self.pageHowToPlay = _make_lazy_page_placeholder("pageHowToPlay")
+        pages_stack.addWidget(self.pageHowToPlay)
+        self.pageMapsLibrary = _make_lazy_page_placeholder("pageMapsLibrary")
+        pages_stack.addWidget(self.pageMapsLibrary)
+        self.pagePlayTogether = _make_lazy_page_placeholder("pagePlayHotseat")
+        pages_stack.addWidget(self.pagePlayTogether)
 
-        load_page(PAGE_MAIN_MENU_UI, "page_main_menu.ui")
-        load_page(PAGE_DEDUCTION_UI, "page_deduction.ui")
-        load_page(PAGE_SOLVE_UI, "page_solve.ui")
-        page_how_to_play = load_page(PAGE_HOW_TO_PLAY_UI, "page_how_to_play.ui")
-        self._tutorials_page = TutorialsPageController(page_how_to_play)
-        self._tutorials_page.setup()
-
-        self.pageMapsLibrary = load_page(PAGE_MAPS_LIBRARY_UI, "page_maps_library.ui")
-        self.pagePlayOnline, self._crumbPlayOnline = _make_nav_placeholder_page("Play Online", "pagePlayOnline")
-        self.pagePlayTogether = load_page(PAGE_PLAY_HOTSEAT_UI, "page_play_hotseat.ui")
+        self.pagePlayOnline, self._crumbPlayOnline = _make_nav_placeholder_page(
+            "Play Online", "pagePlayOnline"
+        )
         self.pageHistory, self._crumbHistory = _make_nav_placeholder_page("History", "pageHistory")
         self.pageSettings, self._crumbSettings = _make_nav_placeholder_page("Settings", "pageSettings")
         for p in (
@@ -382,21 +395,8 @@ class CryptidApp:
 
         self.pagesStack: QStackedWidget = pages_stack
         self.pageMainMenu: QWidget = self.window.findChild(QWidget, "pageMainMenu")
-        self.pageDeduction: QWidget = self.window.findChild(QWidget, "pageDeduction")
-        self.pageSolve: QWidget = self.window.findChild(QWidget, "pageSolve")
-        self.pageHowToPlay: QWidget = self.window.findChild(QWidget, "pageHowToPlay")
-        if not all(
-            [
-                self.pageMainMenu,
-                self.pageDeduction,
-                self.pageSolve,
-                self.pageHowToPlay,
-                self.pageMapsLibrary,
-            ]
-        ):
-            raise RuntimeError(
-                "Required pages not found (pageMainMenu, pageDeduction, pageSolve, pageHowToPlay, pageMapsLibrary)"
-            )
+        if self.pageMainMenu is None:
+            raise RuntimeError("pageMainMenu not found")
 
         self.router = Router(self.navList, self.pagesStack)
         self.router.register("Home", self.pageMainMenu)
@@ -409,32 +409,9 @@ class CryptidApp:
         self.router.register("History", self.pageHistory)
         self.router.register("Settings", self.pageSettings)
 
-        self.navList.currentRowChanged.connect(self.router.on_nav_row_changed)
-
-        # Default to Home
-        self.router.set_route("Home")
-
-        self._home_page = HomePageController(self.pageMainMenu, self.router.set_route)
-        self._home_page.setup()
-
-        # Solve page setup (combo filters must be installed before SolvePageController accesses combos)
-        self._install_combo_filters()
-        self._solve_page = SolvePageController(self.pageSolve, self.window)
-        self._solve_page.setup()
-
-        # Deduction page setup
-        self._deduction_page = DeductionPageController(self.pageDeduction, self.window)
-        self._deduction_page.setup()
-
-        self._maps_library_page = MapsLibraryPageController(self.pageMapsLibrary, self.window)
-        self._maps_library_page.setup()
-
-        self._play_hotseat_page = PlayHotseatPageController(self.pagePlayTogether, self.window)
-        self._play_hotseat_page.setup()
+        self.navList.currentRowChanged.connect(self._on_nav_row_changed)
 
         self._breadcrumbs = BreadcrumbManager(self.pagesStack)
-        for ctrl in (self._solve_page, self._deduction_page, self._maps_library_page, self._play_hotseat_page):
-            ctrl._breadcrumb_refresh = self._breadcrumbs.refresh
 
         def _inj(host_name: str, page: QWidget) -> QLabel:
             h = page.findChild(QWidget, host_name)
@@ -447,67 +424,20 @@ class CryptidApp:
             _inj("titlePageMainMenu", self.pageMainMenu),
             lambda: [],
         )
-        self._breadcrumbs.register(
-            self.pageDeduction,
-            _inj("titlePageDeduction", self.pageDeduction),
-            lambda: segments_deduction_mode(self._deduction_page),
-        )
-        self._breadcrumbs.register(
-            self.pageSolve,
-            _inj("titlePageSolve", self.pageSolve),
-            lambda: segments_solve_tool(self._solve_page),
-        )
-        self._breadcrumbs.register(
-            self.pageHowToPlay,
-            _inj("titlePageHowToPlay", self.pageHowToPlay),
-            segments_static("Tutorials"),
-        )
-        self._breadcrumbs.register(
-            self.pageMapsLibrary,
-            _inj("titlePageMapsLibrary", self.pageMapsLibrary),
-            lambda: segments_maps_library(self._maps_library_page),
-        )
         self._breadcrumbs.register(self.pagePlayOnline, self._crumbPlayOnline, segments_static("Play Online"))
-        self._breadcrumbs.register(
-            self.pagePlayTogether,
-            _inj("titlePagePlayHotseat", self.pagePlayTogether),
-            lambda: segments_play_hotseat(self._play_hotseat_page),
-        )
         self._breadcrumbs.register(self.pageHistory, self._crumbHistory, segments_static("History"))
         self._breadcrumbs.register(self.pageSettings, self._crumbSettings, segments_static("Settings"))
 
         self.pagesStack.currentChanged.connect(lambda _i: self._breadcrumbs.refresh())
-        self._breadcrumbs.refresh()
 
-        # When leaving Solve / Deduction pages, preserve state; when returning, restore
         self._solve_page_index = self.pagesStack.indexOf(self.pageSolve)
         self._deduction_page_index = self.pagesStack.indexOf(self.pageDeduction)
         self._play_hotseat_page_index = self.pagesStack.indexOf(self.pagePlayTogether)
         self._maps_library_page_index = self.pagesStack.indexOf(self.pageMapsLibrary)
         self._last_page_index = self.pagesStack.currentIndex()
 
-        def on_page_changed(idx: int) -> None:
-            if self._last_page_index == self._solve_page_index and idx != self._solve_page_index:
-                self._solve_page.on_navigate_away()
-            elif idx == self._solve_page_index:
-                self._solve_page.on_navigate_to()
+        self.pagesStack.currentChanged.connect(self._on_page_changed)
 
-            if self._last_page_index == self._deduction_page_index and idx != self._deduction_page_index:
-                self._deduction_page.on_navigate_away()
-            elif idx == self._deduction_page_index:
-                self._deduction_page.on_navigate_to()
-
-            if idx == self._play_hotseat_page_index:
-                self._play_hotseat_page.on_navigate_to()
-
-            if idx == self._maps_library_page_index:
-                self._maps_library_page.on_navigate_to()
-
-            self._last_page_index = idx
-
-        self.pagesStack.currentChanged.connect(on_page_changed)
-
-        # mainScroll horizontal bar: direct stylesheet + remove corner overlap
         main_scroll = self.window.findChild(QScrollArea, "mainScroll")
         if main_scroll is not None:
             corner = QWidget()
@@ -546,8 +476,217 @@ class CryptidApp:
 
         self.window.setWindowTitle(APP_DISPLAY_NAME)
 
+        self._home_page = HomePageController(self.pageMainMenu, self._set_route)
+        self._home_page.setup()
+
+        self.router.set_route("Home")
+        self._breadcrumbs.refresh()
+
+    def _load_page_ui(self, path: Path, name: str, pages_stack: QStackedWidget) -> QWidget:
+        p = str(path.resolve())
+        f = QFile(p)
+        if not f.open(QIODevice.OpenModeFlag.ReadOnly):
+            raise RuntimeError(f"Cannot open UI file: {p}")
+        w = self._ui_loader.load(f, None)
+        f.close()
+        if w is None:
+            raise RuntimeError(f"Failed to load {name}")
+        pages_stack.addWidget(w)
+        return w
+
+    def _replace_page_widget(self, placeholder: QWidget, ui_path: Path, ui_name: str) -> QWidget:
+        """Swap a lazy placeholder for a loaded .ui page at the same stack index."""
+        idx = self.pagesStack.indexOf(placeholder)
+        if idx < 0:
+            raise RuntimeError(f"Placeholder {placeholder.objectName()} not in pagesStack")
+        p = str(ui_path.resolve())
+        f = QFile(p)
+        if not f.open(QIODevice.OpenModeFlag.ReadOnly):
+            raise RuntimeError(f"Cannot open UI file: {p}")
+        page = self._ui_loader.load(f, None)
+        f.close()
+        if page is None:
+            raise RuntimeError(f"Failed to load {ui_name}")
+        self.pagesStack.removeWidget(placeholder)
+        placeholder.deleteLater()
+        self.pagesStack.insertWidget(idx, page)
+        return page
+
+    def _set_route(self, nav_text: str) -> bool:
+        self._ensure_page_loaded(nav_text)
+        return self.router.set_route(nav_text)
+
+    def _on_nav_row_changed(self, row: int) -> None:
+        item = self.navList.item(row)
+        if item is not None:
+            self._ensure_page_loaded((item.text() or "").strip())
+        self.router.on_nav_row_changed(row)
+
+    def _ensure_page_loaded(self, nav_text: str) -> None:
+        if nav_text not in _LAZY_NAV_ROUTES or nav_text in self._loaded_routes:
+            return
+        loaders: dict[str, Callable[[], None]] = {
+            "Solver Tool": self._load_solve_page,
+            "Deduction Mode": self._load_deduction_page,
+            "Tutorials": self._load_tutorials_page,
+            "Maps Library": self._load_maps_library_page,
+            "Play Hotseat": self._load_play_hotseat_page,
+        }
+        loader = loaders.get(nav_text)
+        if loader is None:
+            return
+        QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
+        try:
+            loader()
+            self._loaded_routes.add(nav_text)
+            self._breadcrumbs.refresh()
+        finally:
+            QApplication.restoreOverrideCursor()
+
+    def _load_solve_page(self) -> None:
+        from ui.pages.page_solve import SolvePageController
+
+        self.pageSolve = self._replace_page_widget(
+            self.pageSolve, PAGE_SOLVE_UI, "page_solve.ui"
+        )
+        self._install_combo_filters()
+        self._solve_page = SolvePageController(self.pageSolve, self.window)
+        self._solve_page.setup()
+        self._solve_page._breadcrumb_refresh = self._breadcrumbs.refresh
+        self.router.register("Solver Tool", self.pageSolve)
+        self._register_solve_breadcrumbs()
+
+    def _load_deduction_page(self) -> None:
+        from ui.pages.page_deduction import DeductionPageController
+
+        self.pageDeduction = self._replace_page_widget(
+            self.pageDeduction, PAGE_DEDUCTION_UI, "page_deduction.ui"
+        )
+        self._install_combo_filters()
+        self._deduction_page = DeductionPageController(self.pageDeduction, self.window)
+        self._deduction_page.setup()
+        self._deduction_page._breadcrumb_refresh = self._breadcrumbs.refresh
+        self.router.register("Deduction Mode", self.pageDeduction)
+        self._register_deduction_breadcrumbs()
+
+    def _load_tutorials_page(self) -> None:
+        from ui.pages.page_tutorials import TutorialsPageController
+
+        self.pageHowToPlay = self._replace_page_widget(
+            self.pageHowToPlay, PAGE_HOW_TO_PLAY_UI, "page_how_to_play.ui"
+        )
+        self._tutorials_page = TutorialsPageController(self.pageHowToPlay)
+        self._tutorials_page.setup()
+        self.router.register("Tutorials", self.pageHowToPlay)
+        self._register_tutorials_breadcrumbs()
+
+    def _load_maps_library_page(self) -> None:
+        from ui.pages.maps_library.page_maps_library import MapsLibraryPageController
+
+        self.pageMapsLibrary = self._replace_page_widget(
+            self.pageMapsLibrary, PAGE_MAPS_LIBRARY_UI, "page_maps_library.ui"
+        )
+        self._install_combo_filters()
+        self._maps_library_page = MapsLibraryPageController(self.pageMapsLibrary, self.window)
+        self._maps_library_page.setup()
+        self._maps_library_page._breadcrumb_refresh = self._breadcrumbs.refresh
+        self.router.register("Maps Library", self.pageMapsLibrary)
+        self._register_maps_library_breadcrumbs()
+
+    def _load_play_hotseat_page(self) -> None:
+        from ui.pages.page_play_hotseat import PlayHotseatPageController
+
+        self.pagePlayTogether = self._replace_page_widget(
+            self.pagePlayTogether, PAGE_PLAY_HOTSEAT_UI, "page_play_hotseat.ui"
+        )
+        self._install_combo_filters()
+        self._play_hotseat_page = PlayHotseatPageController(self.pagePlayTogether, self.window)
+        self._play_hotseat_page.setup()
+        self._play_hotseat_page._breadcrumb_refresh = self._breadcrumbs.refresh
+        self.router.register("Play Hotseat", self.pagePlayTogether)
+        self._register_play_hotseat_breadcrumbs()
+
+    def _register_solve_breadcrumbs(self) -> None:
+        host = self.pageSolve.findChild(QWidget, "titlePageSolve")
+        if host is None:
+            raise RuntimeError("titlePageSolve not found")
+        self._breadcrumbs.register(
+            self.pageSolve,
+            inject_page_breadcrumb(host),
+            lambda: segments_solve_tool(self._solve_page) if self._solve_page else [],
+        )
+
+    def _register_deduction_breadcrumbs(self) -> None:
+        host = self.pageDeduction.findChild(QWidget, "titlePageDeduction")
+        if host is None:
+            raise RuntimeError("titlePageDeduction not found")
+        self._breadcrumbs.register(
+            self.pageDeduction,
+            inject_page_breadcrumb(host),
+            lambda: segments_deduction_mode(self._deduction_page) if self._deduction_page else [],
+        )
+
+    def _register_tutorials_breadcrumbs(self) -> None:
+        host = self.pageHowToPlay.findChild(QWidget, "titlePageHowToPlay")
+        if host is None:
+            raise RuntimeError("titlePageHowToPlay not found")
+        self._breadcrumbs.register(
+            self.pageHowToPlay,
+            inject_page_breadcrumb(host),
+            segments_static("Tutorials"),
+        )
+
+    def _register_maps_library_breadcrumbs(self) -> None:
+        host = self.pageMapsLibrary.findChild(QWidget, "titlePageMapsLibrary")
+        if host is None:
+            raise RuntimeError("titlePageMapsLibrary not found")
+        self._breadcrumbs.register(
+            self.pageMapsLibrary,
+            inject_page_breadcrumb(host),
+            lambda: segments_maps_library(self._maps_library_page)
+            if self._maps_library_page
+            else [],
+        )
+
+    def _register_play_hotseat_breadcrumbs(self) -> None:
+        host = self.pagePlayTogether.findChild(QWidget, "titlePagePlayHotseat")
+        if host is None:
+            raise RuntimeError("titlePagePlayHotseat not found")
+        self._breadcrumbs.register(
+            self.pagePlayTogether,
+            inject_page_breadcrumb(host),
+            lambda: segments_play_hotseat(self._play_hotseat_page)
+            if self._play_hotseat_page
+            else [],
+        )
+
+    def _on_page_changed(self, idx: int) -> None:
+        solve = self._solve_page
+        if solve is not None:
+            if self._last_page_index == self._solve_page_index and idx != self._solve_page_index:
+                solve.on_navigate_away()
+            elif idx == self._solve_page_index:
+                solve.on_navigate_to()
+
+        deduction = self._deduction_page
+        if deduction is not None:
+            if self._last_page_index == self._deduction_page_index and idx != self._deduction_page_index:
+                deduction.on_navigate_away()
+            elif idx == self._deduction_page_index:
+                deduction.on_navigate_to()
+
+        hotseat = self._play_hotseat_page
+        if hotseat is not None and idx == self._play_hotseat_page_index:
+            hotseat.on_navigate_to()
+
+        maps_lib = self._maps_library_page
+        if maps_lib is not None and idx == self._maps_library_page_index:
+            maps_lib.on_navigate_to()
+
+        self._last_page_index = idx
+
     def _install_combo_filters(self) -> None:
-        """Wire root window for custom combo popups."""
+        """Wire root window for custom combo popups (safe to call after each lazy page load)."""
         for cb in self.window.findChildren(QComboBox):
             if isinstance(cb, ComboBoxWithPopupAbove):
                 cb.set_root_window(self.window)

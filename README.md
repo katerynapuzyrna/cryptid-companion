@@ -13,9 +13,11 @@ Cryptid Companion helps you set up maps, explore clues, run deductions, play hot
 
 ## Download
 
-**Windows:** [Latest release](https://github.com/katerynapuzyrna/cryptid-companion/releases/latest) — download `CryptidCompanion.exe` (no install required).
+**Windows:** [Latest release](https://github.com/katerynapuzyrna/cryptid-companion/releases/latest) (`v0.3.1`) — download `CryptidCompanion-win.zip`, extract the folder, and run `CryptidCompanion.exe` (no installer required).
 
-Built automatically when a version tag (`v*.*.*`) is pushed. See [docs/PUBLISHING.md](docs/PUBLISHING.md) for release instructions.
+First public download was **v0.3.0**; earlier roadmap items were pre-release milestones.
+
+Built automatically when a version tag (`v*.*.*`) is pushed. The release is an **onedir** bundle (folder + exe) for faster startup than a single-file build. See [docs/PUBLISHING.md](docs/PUBLISHING.md) for release instructions.
 
 ---
 
@@ -126,7 +128,13 @@ pip install -r requirements-build.txt
 build_exe.bat
 ```
 
-Output: `dist/CryptidCompanion.exe` (single-file build; first launch unpacks to a temp folder).
+Output: `dist/CryptidCompanion/` — run `CryptidCompanion.exe` inside that folder (onedir build; faster startup than a single-file exe).
+
+Map card thumbnails for all predefined maps are generated automatically before packaging (`tools/generate_map_thumbnails.py`). To refresh them during development:
+
+```bash
+python tools/generate_map_thumbnails.py --force
+```
 
 ---
 
@@ -229,10 +237,10 @@ Pre-push (all of the above): `tools\pre_push_check.bat`
 
 | Phase | Status | Goals |
 |-------|--------|--------|
-| **v0.1** | Done | Public repo, README, LICENSE, reproducible dev setup |
-| **v0.2** | Done | pytest suite, integration tests, GitHub Actions CI, architecture docs |
-| **v0.3** | Done | GitHub Releases with `.exe`, publishing guide, custom maps template |
-| **v0.4+** | Planned | Manual QA checklist, ML module, online play |
+| **Phase 1** | Done | Public repo, README, LICENSE, reproducible dev setup |
+| **Phase 2** | Done | pytest suite, integration tests, GitHub Actions CI, architecture docs |
+| **Phase 3** | Done | GitHub Releases (`v0.3.0`), publishing guide, custom maps template |
+| **Phase 4+** | Planned | Manual QA checklist, ML module, online play |
 
 See [CHANGELOG.md](CHANGELOG.md) and [docs/PUBLISHING.md](docs/PUBLISHING.md).
 

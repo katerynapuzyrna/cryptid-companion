@@ -42,7 +42,7 @@ git rm --cached src/cryptid/data/custom_maps.json
 ### 4. First push
 
 ```bash
-git commit -m "Initial public release (v0.2.0)"
+git commit -m "Initial public release"
 git branch -M main
 git remote add origin https://github.com/katerynapuzyrna/cryptid-companion.git
 git push -u origin main
@@ -69,7 +69,7 @@ copy src\cryptid\data\custom_maps.example.json src\cryptid\data\custom_maps.json
 
 ---
 
-## GitHub Release (Windows `.exe`)
+## GitHub Release (Windows app)
 
 Releases are built automatically when you push a **version tag**.
 
@@ -79,15 +79,18 @@ Releases are built automatically when you push a **version tag**.
 # Ensure main is clean and tests pass
 tools\pre_push_check.bat
 
-git tag -a v0.3.0 -m "v0.3.0 — first public Windows release"
-git push origin v0.3.0
+git tag -a v0.3.1 -m "v0.3.1 — faster Windows startup"
+git push origin v0.3.1
 ```
 
 The [Release workflow](../.github/workflows/release.yml) will:
 
 1. Run tests on Ubuntu
-2. Build `CryptidCompanion.exe` on Windows
-3. Attach the exe to a GitHub Release with auto-generated notes
+2. Pre-generate map card thumbnails (`tools/generate_map_thumbnails.py --force`)
+3. Build the app folder on Windows (`dist/CryptidCompanion/`)
+4. Zip it as `CryptidCompanion-win.zip` and attach it to a GitHub Release with auto-generated notes
+
+Users extract the zip and run `CryptidCompanion.exe` inside the folder. **Onedir** builds start much faster than a single-file exe because nothing is unpacked to `%TEMP%` on every launch.
 
 ### Manual release (fallback)
 
@@ -98,7 +101,7 @@ pip install -r requirements-build.txt
 build_exe.bat
 ```
 
-Then on GitHub: **Releases → Draft new release** → upload `dist/CryptidCompanion.exe`.
+Then on GitHub: **Releases → Draft new release** → upload `dist/CryptidCompanion-win.zip` (or zip `dist/CryptidCompanion/` yourself).
 
 ---
 

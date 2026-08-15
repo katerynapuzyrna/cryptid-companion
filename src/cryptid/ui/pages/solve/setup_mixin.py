@@ -131,7 +131,7 @@ class SolveSetupMixin:
             lbl_no_cards=self.lblNoMapCardsFound,
             deduction_mode=deduction,
         )
-        self.map_cards_manager.setup()
+        self._map_cards_loaded = False
         self.cbSelectPlayers.currentTextChanged.connect(self._on_select_players_changed)
 
         def _crumb_on_map_selection() -> None:
@@ -323,6 +323,12 @@ class SolveSetupMixin:
         self._on_map_source_mode_changed()
 
         QTimer.singleShot(0, self._build_board_content)
+
+    def _ensure_map_cards_loaded(self) -> None:
+        if getattr(self, "_map_cards_loaded", False):
+            return
+        self.map_cards_manager.setup()
+        self._map_cards_loaded = True
 
     def _on_build_save_icon_clicked(self) -> None:
         bb = getattr(self, "board_builder", None)
