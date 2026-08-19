@@ -3,18 +3,10 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-from PySide6.QtCore import QTimer
-from PySide6.QtWidgets import (
-    QDialog,
-    QHBoxLayout,
-    QLabel,
-    QLineEdit,
-    QPushButton,
-    QVBoxLayout,
-    QWidget,
-)
+if TYPE_CHECKING:
+    from PySide6.QtWidgets import QWidget
 
 from settings.config import CUSTOM_MAPS_JSON, CUSTOM_MAPS_EXAMPLE_JSON, DATA_DIR, MAPS_JSON
 from settings.strings import (
@@ -105,6 +97,16 @@ def prompt_save_map_name(
     *,
     window_title: str | None = None,
 ) -> str | None:
+    from PySide6.QtCore import QTimer
+    from PySide6.QtWidgets import (
+        QDialog,
+        QHBoxLayout,
+        QLabel,
+        QLineEdit,
+        QPushButton,
+        QVBoxLayout,
+    )
+
     dlg = QDialog(parent)
     dlg.setWindowTitle(window_title or MAP_SAVE_DIALOG_TITLE)
     dlg.setModal(True)
