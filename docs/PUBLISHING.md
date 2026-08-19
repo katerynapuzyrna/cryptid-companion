@@ -56,10 +56,10 @@ Verify the **CI** badge in README turns green after the first workflow run.
 
 | File | In git? | Purpose |
 |------|---------|---------|
-| `src/cryptid/data/custom_maps.example.json` | Yes | Empty template for new clones |
+| `src/cryptid/data/custom_maps.example.json` | Yes | Starter custom maps (includes **Dan broke everything**) |
 | `src/cryptid/data/custom_maps.json` | **No** | Your saved custom maps (local only) |
 
-On first run, the app copies the example file to `custom_maps.json` if it is missing.
+On first run, the app copies the example file to `custom_maps.json` if it is missing, and merges any bundled starter maps that are not already present.
 
 To reset manually:
 
@@ -79,8 +79,8 @@ Releases are built automatically when you push a **version tag**.
 # Ensure main is clean and tests pass
 tools\pre_push_check.bat
 
-git tag -a v0.3.1 -m "v0.3.1 — faster Windows startup"
-git push origin v0.3.1
+git tag -a v0.3.2 -m "v0.3.2 — Play Hotseat placement rules and bundled custom map"
+git push origin v0.3.2
 ```
 
 The [Release workflow](../.github/workflows/release.yml) will:

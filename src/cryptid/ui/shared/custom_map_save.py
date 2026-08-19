@@ -26,23 +26,62 @@ from settings.strings import (
 
 
 def ensure_custom_maps_json() -> None:
-    """Create ``custom_maps.json`` from the example template when missing (fresh clone)."""
-    if CUSTOM_MAPS_JSON.exists():
-        return
+    """Create ``custom_maps.json`` and merge any bundled starter maps that are missing."""
     try:
         DATA_DIR.mkdir(parents=True, exist_ok=True)
-        if CUSTOM_MAPS_EXAMPLE_JSON.is_file():
-            CUSTOM_MAPS_JSON.write_text(
-                CUSTOM_MAPS_EXAMPLE_JSON.read_text(encoding="utf-8"),
-                encoding="utf-8",
-            )
-        else:
-            CUSTOM_MAPS_JSON.write_text(
-                '{"version": 1, "maps": []}\n',
-                encoding="utf-8",
-            )
+        if not CUSTOM_MAPS_JSON.exists():
+            if CUSTOM_MAPS_EXAMPLE_JSON.is_file():
+                CUSTOM_MAPS_JSON.write_text(
+                    CUSTOM_MAPS_EXAMPLE_JSON.read_text(encoding="utf-8"),
+                    encoding="utf-8",
+                )
+            else:
+                CUSTOM_MAPS_JSON.write_text(
+                    '{"version": 1, "maps": []}\n',
+                    encoding="utf-8",
+                )
+        _merge_bundled_custom_maps()
     except OSError:
         pass
+
+
+def _merge_bundled_custom_maps() -> None:
+    """Append starter maps from the example file when the user file lacks them by name."""
+    if not CUSTOM_MAPS_EXAMPLE_JSON.is_file() or not CUSTOM_MAPS_JSON.exists():
+        return
+    try:
+        example = json.loads(CUSTOM_MAPS_EXAMPLE_JSON.read_text(encoding="utf-8"))
+        root = json.loads(CUSTOM_MAPS_JSON.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, TypeError):
+        return
+    existing = list(root.get("maps") or [])
+    existing_names = {
+        str(m.get("name") or "").strip().lower()
+        for m in existing
+        if isinstance(m, dict)
+    }
+    next_id = next_custom_map_id()
+    added = False
+    for starter in example.get("maps") or []:
+        if not isinstance(starter, dict):
+            continue
+        name = str(starter.get("name") or "").strip()
+        if not name or name.lower() in existing_names:
+            continue
+        tagged = dict(starter)
+        tagged["id"] = next_id
+        next_id += 1
+        existing.append(tagged)
+        existing_names.add(name.lower())
+        added = True
+    if not added:
+        return
+    root["maps"] = existing
+    root["version"] = root.get("version", 1)
+    CUSTOM_MAPS_JSON.write_text(
+        json.dumps(root, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
 
 
 def next_custom_map_id() -> int:

@@ -13,7 +13,7 @@ Cryptid Companion helps you set up maps, explore clues, run deductions, play hot
 
 ## Download
 
-**Windows:** [Latest release](https://github.com/katerynapuzyrna/cryptid-companion/releases/latest) (`v0.3.1`) — download `CryptidCompanion-win.zip`, extract the folder, and run `CryptidCompanion.exe` (no installer required).
+**Windows:** [Latest release](https://github.com/katerynapuzyrna/cryptid-companion/releases/latest) (`v0.3.2`) — download `CryptidCompanion-win.zip`, extract the folder, and run `CryptidCompanion.exe` (no installer required).
 
 First public download was **v0.3.0**; earlier roadmap items were pre-release milestones.
 

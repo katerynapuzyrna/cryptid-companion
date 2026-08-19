@@ -13,8 +13,18 @@ CRYPTID = ROOT / "src" / "cryptid"
 
 datas = [
     (str(CRYPTID / "assets"), "assets"),
-    (str(CRYPTID / "data"), "data"),
 ]
+
+# Bundle data files but never ship the builder's local custom_maps.json (gitignored).
+_data_dir = CRYPTID / "data"
+for _path in _data_dir.rglob("*"):
+    if not _path.is_file():
+        continue
+    if _path.name == "custom_maps.json":
+        continue
+    _rel_parent = _path.relative_to(_data_dir).parent
+    _dest = "data" if str(_rel_parent) == "." else str(Path("data") / _rel_parent).replace("\\", "/")
+    datas.append((str(_path), _dest))
 
 binaries = collect_dynamic_libs("PySide6")
 

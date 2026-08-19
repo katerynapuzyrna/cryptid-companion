@@ -529,22 +529,39 @@ class ChipItem(QGraphicsObject):
                         self._canvas.notify_undo_checkpoint()
                         return
                     self._canvas.release_chip(self)
-                    # Validate: max 1 square, max 1 chip per color, max 4 chips per hex
                     existing = self._canvas.chip_occupied.get(hex_slot, [])
-                    n_square = sum(1 for c in existing if c.shape_kind == "square")
-                    colors_used = {c.fill_color for c in existing}
-                    would_add_square = 1 if self.shape_kind == "square" else 0
-                    total_after = len(existing) + 1
-                    squares_after = n_square + would_add_square
-                    valid = (
-                        total_after <= 4
-                        and squares_after <= 1
-                        and self.fill_color not in colors_used
-                    )
-                    if not valid:
-                        self._apply_bank_home_after_release_off_hex()
+                    validate = getattr(self._canvas, "_validate_chip_drop", None)
+                    if callable(validate):
+                        try:
+                            valid = bool(validate(self, hex_slot, existing))
+                        except Exception:
+                            valid = False
+                        if not valid:
+                            # Snap back so an illegal hex does not undo the chip.
+                            if old_slot is not None:
+                                self._canvas.assign_chip(
+                                    self, old_slot[0], old_slot[1], old_slot[2]
+                                )
+                            else:
+                                self._apply_bank_home_after_release_off_hex()
+                        else:
+                            self._canvas.assign_chip(self, slot[0], slot[1], idx)
                     else:
-                        self._canvas.assign_chip(self, slot[0], slot[1], idx)
+                        # Deduction / default: max 1 square, max 1 chip per color, max 4 chips
+                        n_square = sum(1 for c in existing if c.shape_kind == "square")
+                        colors_used = {c.fill_color for c in existing}
+                        would_add_square = 1 if self.shape_kind == "square" else 0
+                        total_after = len(existing) + 1
+                        squares_after = n_square + would_add_square
+                        valid = (
+                            total_after <= 4
+                            and squares_after <= 1
+                            and self.fill_color not in colors_used
+                        )
+                        if not valid:
+                            self._apply_bank_home_after_release_off_hex()
+                        else:
+                            self._canvas.assign_chip(self, slot[0], slot[1], idx)
         else:
             if piece is not None:
                 self.setPos(snap_center)

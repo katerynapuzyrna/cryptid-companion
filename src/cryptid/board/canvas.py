@@ -1,3 +1,5 @@
+from typing import Any, Callable
+
 from PySide6.QtWidgets import QGraphicsScene, QGraphicsPathItem, QGraphicsObject
 from PySide6.QtGui import QPainterPath, QPen, QBrush
 from PySide6.QtCore import QRectF, QPointF, Qt
@@ -39,6 +41,12 @@ class PuzzleCanvas:
         # Player chips: multiple per hex allowed
         self.chip_occupied: dict[tuple[int,int,int], list] = {}
         self.chip_slot: dict[QGraphicsObject, tuple[int,int,int]] = {}
+        # Optional Hotseat hook: (chip, hex_slot, existing_on_hex) -> bool.
+        # Deduction leaves this unset and uses ChipItem occupancy only.
+        self._validate_chip_drop: Callable[[Any, tuple[int, int, int], list], bool] | None = None
+        self._on_chip_assigned: Callable[..., Any] | None = None
+        self._on_chip_released: Callable[..., Any] | None = None
+        self._on_chip_dropped_hotseat_home: Callable[..., Any] | None = None
         # Dimmed “at bank” ghost for structure markers (build mode); off for hotseat / simulation.
         self._marker_bank_home_shadow_enabled: bool = True
 

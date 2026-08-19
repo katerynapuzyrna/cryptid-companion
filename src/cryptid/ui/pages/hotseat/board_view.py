@@ -44,7 +44,9 @@ from board.board_builder import BoardBuilder
 from board.board_view import BoardView
 from board.markers import MARKER_SCALE_CANVAS, ChipItem
 from board.pieces import find_hex_under_point
+from logic.chip_placement import PlaceDecision
 from logic.conditions import compute_all_conditions
+from ui.pages.hotseat_placement import evaluate_hotseat_drop, validate_hotseat_map_drop
 from ui.shared.widgets.player_colors import get_player_color_hex
 
 from .chip_widgets import _HotseatChipDragLabel, _hotseat_chip_drag_label_movable
@@ -76,6 +78,7 @@ class HotseatBoardView(BoardView):
         self._qpick_overlay: QFrame | None = None
         self._qpick_proxy: QGraphicsProxyWidget | None = None
         self._qpick_chip: ChipItem | None = None
+        self._qpick_reuse_existing: bool = False
         self._qpick_dimmed_chips: list[tuple[Any, float]] = []
         self._hotseat_advanced_mode: bool = False
         #: In-proxy bank chip interaction: (shape, color_hex) while ``grabMouse`` on viewport.
@@ -88,6 +91,7 @@ class HotseatBoardView(BoardView):
         self._hotseat_strip_proxy_cursor_set: bool = False
         #: Question/search picker ring proxy cursor (same embedding issue as the strip).
         self._hotseat_qpick_proxy_cursor_set: bool = False
+        self._hotseat_in_event_filter: bool = False
         self.setAcceptDrops(True)
         self.viewport().setAcceptDrops(True)
         self.setMouseTracking(True)
@@ -96,6 +100,7 @@ class HotseatBoardView(BoardView):
         app = QApplication.instance()
         if app is not None:
             app.installEventFilter(self)
+            self.destroyed.connect(self._remove_hotseat_app_event_filter)
         m = _HOTSEAT_VIEW_VIEWPORT_FRAME_MARGIN_PX
         self.setViewportMargins(m, m, m, m)
 
@@ -260,59 +265,78 @@ class HotseatBoardView(BoardView):
         self.viewport().update()
         self._notify_end_turn_eligibility_changed()
 
+    def _remove_hotseat_app_event_filter(self, *_args: object) -> None:
+        app = QApplication.instance()
+        if app is None:
+            return
+        try:
+            app.removeEventFilter(self)
+        except RuntimeError:
+            pass
+
     def eventFilter(self, watched: QObject, event: QEvent) -> bool:
-        pend = self._pending_bank_chip_drag
-        if pend is not None:
-            et = event.type()
-            if et == QEvent.Type.MouseMove and isinstance(event, QMouseEvent):
-                if event.buttons() & Qt.MouseButton.LeftButton:
-                    g = event.globalPosition().toPoint()
-                    if (
-                        g - pend[2]
-                    ).manhattanLength() >= QApplication.startDragDistance():
-                        shape, color_hex, _ = pend
+        # App-wide filter: never call super().eventFilter() — QGraphicsView re-enters
+        # the Python filter chain (with HoverTooltipManager) until widgets are deleted.
+        if self._hotseat_in_event_filter:
+            return False
+        self._hotseat_in_event_filter = True
+        try:
+            pend = self._pending_bank_chip_drag
+            if pend is not None:
+                et = event.type()
+                if et == QEvent.Type.MouseMove and isinstance(event, QMouseEvent):
+                    if event.buttons() & Qt.MouseButton.LeftButton:
+                        g = event.globalPosition().toPoint()
+                        if (
+                            g - pend[2]
+                        ).manhattanLength() >= QApplication.startDragDistance():
+                            shape, color_hex, _ = pend
+                            self._pending_bank_chip_drag = None
+                            self.begin_hotseat_bank_chip_carry(
+                                shape, color_hex, trust_bank_drag=True
+                            )
+                elif et == QEvent.Type.MouseButtonRelease and isinstance(
+                    event, QMouseEvent
+                ):
+                    if event.button() == Qt.MouseButton.LeftButton:
                         self._pending_bank_chip_drag = None
-                        self.begin_hotseat_bank_chip_carry(
-                            shape, color_hex, trust_bank_drag=True
-                        )
-            elif et == QEvent.Type.MouseButtonRelease and isinstance(
-                event, QMouseEvent
-            ):
-                if event.button() == Qt.MouseButton.LeftButton:
-                    self._pending_bank_chip_drag = None
-        if (
-            event.type() == QEvent.Type.MouseMove
-            and isinstance(event, QMouseEvent)
-            and self._hotseat_bank_carry is None
-            and (
-                self._map_chip_strip_proxy is not None
-                or self._qpick_proxy is not None
-            )
-        ):
-            self.sync_hotseat_embedded_proxy_cursors()
-        if self._hotseat_bank_carry is not None:
-            if event.type() == QEvent.Type.MouseMove and isinstance(
-                event, QMouseEvent
-            ):
-                self._sync_hotseat_carry_preview_pos(
-                    event.globalPosition().toPoint()
+            if (
+                event.type() == QEvent.Type.MouseMove
+                and isinstance(event, QMouseEvent)
+                and self._hotseat_bank_carry is None
+                and (
+                    self._map_chip_strip_proxy is not None
+                    or self._qpick_proxy is not None
                 )
-        if watched is self.viewport() and self._hotseat_bank_carry is not None:
-            if event.type() == QEvent.Type.MouseButtonPress and isinstance(
-                event, QMouseEvent
             ):
-                if event.button() == Qt.MouseButton.RightButton:
-                    self.cancel_hotseat_bank_chip_carry()
-                    return True
-            if event.type() == QEvent.Type.MouseButtonRelease and isinstance(
-                event, QMouseEvent
-            ):
-                if event.button() == Qt.MouseButton.LeftButton:
-                    self._finish_hotseat_bank_carry_at_global(
+                self.sync_hotseat_embedded_proxy_cursors()
+            if self._hotseat_bank_carry is not None:
+                if event.type() == QEvent.Type.MouseMove and isinstance(
+                    event, QMouseEvent
+                ):
+                    self._sync_hotseat_carry_preview_pos(
                         event.globalPosition().toPoint()
                     )
-                    return True
-        return super().eventFilter(watched, event)
+            if watched is self.viewport() and self._hotseat_bank_carry is not None:
+                if event.type() == QEvent.Type.MouseButtonPress and isinstance(
+                    event, QMouseEvent
+                ):
+                    if event.button() == Qt.MouseButton.RightButton:
+                        self.cancel_hotseat_bank_chip_carry()
+                        return True
+                if event.type() == QEvent.Type.MouseButtonRelease and isinstance(
+                    event, QMouseEvent
+                ):
+                    if event.button() == Qt.MouseButton.LeftButton:
+                        self._finish_hotseat_bank_carry_at_global(
+                            event.globalPosition().toPoint()
+                        )
+                        return True
+            return False
+        except RuntimeError:
+            return False
+        finally:
+            self._hotseat_in_event_filter = False
 
     def _hotseat_strip_chip_at_global(
         self, strip_root: QWidget, global_pos: QPoint
@@ -430,9 +454,16 @@ class HotseatBoardView(BoardView):
         prev = self._hotseat_board_builder
         if prev is not None and prev.canvas is not None:
             setattr(prev.canvas, "_on_chip_dropped_hotseat_home", None)
+            setattr(prev.canvas, "_validate_chip_drop", None)
         self._hotseat_board_builder = bb
         if bb is not None and bb.canvas is not None:
             bb.canvas._on_chip_dropped_hotseat_home = self._on_hotseat_chip_dropped_home
+            bb.canvas._validate_chip_drop = self._on_hotseat_validate_chip_drop
+
+    def _on_hotseat_validate_chip_drop(
+        self, chip: ChipItem, hex_slot: tuple[int, int, int], existing: list
+    ) -> bool:
+        return validate_hotseat_map_drop(self, chip, hex_slot, existing)
 
     def undo_hotseat_additional_sharing_square(self) -> None:
         """Return the current turn's additional-sharing square chip to its home (no other chips affected)."""
@@ -452,6 +483,7 @@ class HotseatBoardView(BoardView):
 
     def _clear_question_picker_state(self) -> None:
         """Drop chip/overlay references; remove overlay widget (scene may be cleared next)."""
+        self._qpick_reuse_existing = False
         chip = self._qpick_chip
         self._qpick_chip = None
         if chip is not None:
@@ -499,21 +531,30 @@ class HotseatBoardView(BoardView):
         self.viewport().unsetCursor()
 
     def _dismiss_question_target_picker(self, cancel_chip: bool) -> None:
-        """Remove the picker UI; optionally return the gray chip to the panel."""
+        """Remove the picker UI; optionally return a newly placed chip to the panel.
+
+        Reused Search circles (already on the map) stay on their hex when the picker is cancelled.
+        """
+        reuse = self._qpick_reuse_existing
+        self._qpick_reuse_existing = False
         chip = self._qpick_chip
         self._qpick_chip = None
         if chip is not None:
             chip.set_position_change_notify(None)
         self._destroy_question_picker_overlay()
         bb = self._hotseat_board_builder
-        if cancel_chip and chip is not None and bb is not None and bb.canvas is not None:
+        if cancel_chip and chip is not None and not reuse and bb is not None and bb.canvas is not None:
             bb.canvas.release_chip(chip)
             sc = chip.scene()
             if sc is not None:
                 sc.removeItem(chip)
             bb.canvas.notify_undo_checkpoint()
         elif chip is not None:
-            chip.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable, True)
+            if reuse:
+                chip.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable, False)
+                chip.setCursor(Qt.CursorShape.ArrowCursor)
+            else:
+                chip.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable, True)
         sb = self._gameplay_sidebar
         if sb is not None:
             sb.sync_hotseat_question_bank_visibility()
@@ -521,6 +562,7 @@ class HotseatBoardView(BoardView):
         self._notify_end_turn_eligibility_changed()
 
     def _remove_question_picker_overlay_only(self) -> None:
+        self._qpick_reuse_existing = False
         chip = self._qpick_chip
         self._qpick_chip = None
         if chip is not None:
@@ -694,9 +736,10 @@ class HotseatBoardView(BoardView):
         frame.setVisible(True)
         self._notify_end_turn_eligibility_changed()
 
-    def _open_search_picker(self, chip: ChipItem) -> None:
+    def _open_search_picker(self, chip: ChipItem, *, reuse_existing: bool = False) -> None:
         """Show a Cancel/OK overlay on the search chip; OK triggers the full search sequence."""
         self._dismiss_question_target_picker(cancel_chip=True)
+        self._qpick_reuse_existing = reuse_existing
         sb = self._gameplay_sidebar
         bb = self._hotseat_board_builder
         sc = self.scene()
@@ -834,8 +877,12 @@ class HotseatBoardView(BoardView):
                 self._qpick_dimmed_chips.append((ch_item, ch_item.zValue()))
                 ch_item.setZValue(0)
         chip.set_position_change_notify(self._place_question_picker_overlay)
-        chip.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable, True)
-        chip.setCursor(Qt.CursorShape.OpenHandCursor)
+        if reuse_existing:
+            chip.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable, False)
+            chip.setCursor(Qt.CursorShape.ArrowCursor)
+        else:
+            chip.setFlag(QGraphicsItem.GraphicsItemFlag.ItemIsMovable, True)
+            chip.setCursor(Qt.CursorShape.OpenHandCursor)
         self._place_question_picker_overlay()
         frame.setVisible(True)
         self._notify_end_turn_eligibility_changed()
@@ -1105,72 +1152,41 @@ class HotseatBoardView(BoardView):
             if sc is None:
                 return False
             piece, idx, snap_center = find_hex_under_point(scene_pos, sc.items(scene_pos))
-            if piece is None:
+            if piece is None or idx is None:
                 return False
             slot = bb.canvas.item_slot.get(piece)
             if slot is None:
                 return False
-            # Hotseat rule enforcement:
-            # - Search (circle) must be placed on a hex that fits the current player's clue.
-            # - Additional sharing (square) must be placed on a hex that does NOT fit the current player's clue.
-            # If we can't evaluate the clue for any reason, do not block placement.
-            sb = self._gameplay_sidebar
-            ctrl = bb.controller
-            if sb is not None and ctrl is not None and shape in ("circle", "square"):
-                coords = ctrl.cell_big_coords(piece, idx)
-                if coords is not None:
-                    y, x = coords
-                    try:
-                        clue = sb.clue_text_for_player(getattr(sb, "_turn_index", 0))
-                        if clue:
-                            grid = compute_all_conditions(
-                                ctrl.build_current_map(),
-                                advanced_mode=self._hotseat_advanced_mode,
-                            )
-                            matched = _hotseat_match_clue_to_grid(clue, grid)
-                            if matched is not None:
-                                fits = matched in grid.rules_true_at_hex(y, x)
-                                if shape == "circle" and not fits:
-                                    return False
-                                if shape == "square" and fits:
-                                    return False
-                    except Exception:
-                        pass
             hex_slot = (slot[0], slot[1], idx)
             existing = bb.canvas.chip_occupied.get(hex_slot, [])
-            # Hotseat rule: can't place a gray (?) or search circle on a hex that already has a square.
-            if shape in ("question", "circle") and any(
-                getattr(c, "shape_kind", None) == "square" for c in existing
-            ):
-                return False
-            n_square = sum(1 for c in existing if c.shape_kind == "square")
-            colors_used = {(c.fill_color or "").lower() for c in existing}
-            would_add_square = 1 if shape == "square" else 0
-            total_after = len(existing) + 1
-            squares_after = n_square + would_add_square
-            ch = color_hex.lower()
-            # Hotseat: allow Search to target a hex where this color already has a circle.
-            # Instead of placing a duplicate chip, reuse the existing circle and open the Search picker.
-            if shape == "circle" and ch in colors_used:
-                try:
-                    existing_circle = next(
+            decision = evaluate_hotseat_drop(
+                self,
+                shape,
+                color_hex,
+                piece,
+                idx,
+                existing,
+                allow_search_reuse=(shape == "circle"),
+            )
+            if decision is PlaceDecision.REUSE_CIRCLE:
+                ch = color_hex.lower()
+                existing_circle = next(
+                    (
                         c
                         for c in existing
                         if getattr(c, "shape_kind", None) == "circle"
                         and not getattr(c, "_question_mark", False)
                         and (getattr(c, "fill_color", "") or "").lower() == ch
-                    )
-                    self._open_search_picker(existing_circle)
-                    return True
-                except StopIteration:
-                    pass
-            valid = (
-                total_after <= 4
-                and squares_after <= 1
-                and ch not in colors_used
-            )
-            if not valid:
+                    ),
+                    None,
+                )
+                if existing_circle is None:
+                    return False
+                self._open_search_picker(existing_circle, reuse_existing=True)
+                return True
+            if decision is not PlaceDecision.ALLOW:
                 return False
+            sb = self._gameplay_sidebar
             if shape == "square" and sb is not None:
                 if not sb.may_drag_sharing_chip_from_bank():
                     return False

@@ -29,6 +29,7 @@ class HoverTooltipManager(QObject):
         app = QApplication.instance()
         if app is not None:
             app.installEventFilter(self)
+        self._root.destroyed.connect(self._on_root_destroyed)
         self._showing_for: tuple[QWidget, Union[str, Callable[[], QWidget]]] | None = None
         self._global_condition: Optional[Callable[[], bool]] = None
         self._custom_tooltip: QFrame | None = None
@@ -114,10 +115,25 @@ class HoverTooltipManager(QObject):
             self._showing_for = None
         self._targets = [t for t in self._targets if t[0] is not widget]
 
+    def _on_root_destroyed(self, *_args: object) -> None:
+        try:
+            self._timer.stop()
+        except RuntimeError:
+            pass
+        app = QApplication.instance()
+        if app is not None:
+            try:
+                app.removeEventFilter(self)
+            except RuntimeError:
+                pass
+
     def eventFilter(self, obj: QObject, event: QEvent) -> bool:
         """Re-check tooltip visibility after scroll: cursor may no longer be over target."""
-        if event.type() in (QEvent.Type.Wheel, QEvent.Type.Scroll):
-            QTimer.singleShot(20, self._check)
+        try:
+            if event.type() in (QEvent.Type.Wheel, QEvent.Type.Scroll):
+                QTimer.singleShot(20, self._check)
+        except RuntimeError:
+            return False
         return False
 
     def _make_tooltip_frame(self, content: str | QWidget) -> QFrame:

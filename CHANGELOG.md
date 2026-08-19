@@ -12,6 +12,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/). Version tags mat
 - UI automation for critical paths
 - ML-assisted deduction
 
+## [0.3.2] - 2026-08-20
+
+Play Hotseat placement rules, a bundled custom map, and a quit crash fix.
+
+### Added
+
+- Shared Play Hotseat chip placement checks (sharing squares, Question, Search)
+- Bundled custom map **Dan broke everything** (copied into `custom_maps.json` on first run or upgrade)
+
+### Changed
+
+- Play Hotseat defaults to Random Map; Specific Map name is no longer prefilled
+
+### Fixed
+
+- Crash on quit from recursive app-wide event filters (`QGraphicsView.eventFilter` / tooltips)
+
 ## [0.3.1] - 2026-08-15
 
 Faster Windows startup. First public download remains **v0.3.0**.
@@ -44,6 +61,7 @@ First public download. Earlier roadmap work (Phases 1–2) shipped in this relea
 
 - App branding standardized to **Cryptid Companion** (UI) / **CryptidCompanion** (repo, exe)
 
-[Unreleased]: https://github.com/katerynapuzyrna/cryptid-companion/compare/v0.3.1...HEAD
+[Unreleased]: https://github.com/katerynapuzyrna/cryptid-companion/compare/v0.3.2...HEAD
+[0.3.2]: https://github.com/katerynapuzyrna/cryptid-companion/releases/tag/v0.3.2
 [0.3.1]: https://github.com/katerynapuzyrna/cryptid-companion/releases/tag/v0.3.1
 [0.3.0]: https://github.com/katerynapuzyrna/cryptid-companion/releases/tag/v0.3.0

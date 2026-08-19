@@ -205,7 +205,7 @@ The board layer is **interactive** (drag pieces, place markers). Map previews in
 | File | Content |
 |------|---------|
 | `maps.json` | All official-style predefined maps (grid, structures, books, advanced flag) |
-| `custom_maps.example.json` | Committed template (empty `maps` list) |
+| `custom_maps.example.json` | Committed starter custom maps (includes **Dan broke everything**) |
 | `custom_maps.json` | User-created maps (local only, gitignored; auto-created from example on first run) |
 | `alpha_book.json` … `epsilon_book.json` | Clue text by book ID |
 | `hints.json` | Optional hint strings |

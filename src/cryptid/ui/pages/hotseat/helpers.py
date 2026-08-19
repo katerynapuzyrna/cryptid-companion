@@ -35,19 +35,6 @@ def _hotseat_bank_carry_preview_pixmap(shape: str, color_hex: str) -> QPixmap:
 
 def _hotseat_match_clue_to_grid(clue: str, grid: Any) -> str | None:
     """Resolve book clue text to a ``ConditionsGrid`` label (exact, strip, then case-fold)."""
-    c = (clue or "").strip()
-    if not c:
-        return None
-    if c in grid:
-        return c
-    labels = getattr(grid, "labels", None)
-    if not labels:
-        return None
-    for lab in labels:
-        if lab.strip() == c:
-            return lab
-    c_low = c.lower()
-    for lab in labels:
-        if lab.strip().lower() == c_low:
-            return lab
-    return None
+    from logic.chip_placement import match_clue_to_grid
+
+    return match_clue_to_grid(clue, grid)

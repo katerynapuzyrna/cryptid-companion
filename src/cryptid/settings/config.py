@@ -35,6 +35,10 @@ CLUES_ICONS_DIR = ASSETS_DIR / "icons" / "clues"
 # True = testing mode (preload Atlantis), False = regular behavior (empty board).
 PRELOAD_ATLANTIS_IN_DEDUCTION = False
 
+# Testing: Play Hotseat uses hardcoded clues when the custom map "Dan broke everything" is played.
+# True = keep that clue set, False = assign clues normally. Does not pre-select the map.
+HOTSEAT_TEST_DAN_BROKE_EVERYTHING = True
+
 # Hex fill style: True = textured terrain (grain, bevel, gloss, terrain details), False = flat solid fill.
 TEXTURED_HEX_FILL = False
 

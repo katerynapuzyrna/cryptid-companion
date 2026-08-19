@@ -23,10 +23,15 @@ from PySide6.QtWidgets import (
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QIcon
 
-from logic.conditions import all_condition_labels
+from logic.conditions import all_condition_labels, compute_all_conditions
 from logic.map_loader import build_map_from_data
 from logic.rule_combinations import find_first_rule_combination_with_exactly_one_intersection
-from settings.config import CUSTOM_MAPS_JSON, ICON_HELP, MAPS_JSON
+from settings.config import (
+    CUSTOM_MAPS_JSON,
+    HOTSEAT_TEST_DAN_BROKE_EVERYTHING,
+    ICON_HELP,
+    MAPS_JSON,
+)
 from settings.strings import (
     HOTSEAT_INCORRECT_MAP_NAME_MSG,
     HOTSEAT_INCORRECT_MAP_NAME_TITLE,
@@ -41,6 +46,14 @@ from ui.shared.widgets import (
 from ui.shared.widgets.player_colors import PLAYER_COLORS, get_selected_player_color
 
 _HOTSEAT_CUSTOM_FLAG = "_hotseat_custom"
+
+# TEMP testing: hardcoded 3-player clues for custom map "Dan broke everything".
+_HOTSEAT_TEST_MAP_NAME = "Dan broke everything"
+_HOTSEAT_TEST_CLUES = [
+    "Within three spaces of a green structure",
+    "Within three spaces of a blue structure",
+    "On forest or mountain",
+]
 
 
 class PlayHotseatPageController:
@@ -493,6 +506,11 @@ class PlayHotseatPageController:
         advanced: bool,
     ) -> tuple[list[str], tuple[int, int]] | None:
         """First valid clue set + habitat hex for a custom map, or None if none exist."""
+        hardcoded = PlayHotseatPageController._hardcoded_test_clues_and_habitat(
+            map_data, players, advanced=advanced
+        )
+        if hardcoded is not None:
+            return hardcoded
         try:
             current_map = build_map_from_data(map_data)
         except Exception:
@@ -508,6 +526,31 @@ class PlayHotseatPageController:
         rules, target_hex = found
         y, x = int(target_hex[0]), int(target_hex[1])
         return (list(rules), (y, x))
+
+    @staticmethod
+    def _hardcoded_test_clues_and_habitat(
+        map_data: dict,
+        players: int,
+        *,
+        advanced: bool,
+    ) -> tuple[list[str], tuple[int, int]] | None:
+        """TEMP: fixed clues for 'Dan broke everything' (3 players)."""
+        if not HOTSEAT_TEST_DAN_BROKE_EVERYTHING:
+            return None
+        if players != len(_HOTSEAT_TEST_CLUES):
+            return None
+        if str(map_data.get("name") or "").strip().lower() != _HOTSEAT_TEST_MAP_NAME.lower():
+            return None
+        try:
+            current_map = build_map_from_data(map_data)
+            grid = compute_all_conditions(current_map, advanced_mode=advanced)
+            hexes = grid.intersection_hexes(_HOTSEAT_TEST_CLUES)
+        except Exception:
+            return None
+        if len(hexes) != 1:
+            return None
+        target_hex = next(iter(hexes))
+        return (list(_HOTSEAT_TEST_CLUES), (int(target_hex[0]), int(target_hex[1])))
 
     def _find_map_by_name(self, name: str) -> tuple[dict, bool] | None:
         """Return (map_data, is_custom) for an exact case-insensitive name match."""

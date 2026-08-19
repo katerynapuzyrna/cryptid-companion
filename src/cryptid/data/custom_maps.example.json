@@ -1,4 +1,85 @@
 {
   "version": 1,
-  "maps": []
+  "maps": [
+    {
+      "id": 73,
+      "name": "Dan broke everything",
+      "advancedMode": false,
+      "grid3x2": [
+        [
+          "4t",
+          "3t"
+        ],
+        [
+          "5",
+          "2"
+        ],
+        [
+          "1t",
+          "6t"
+        ]
+      ],
+      "structures": [
+        {
+          "tileId": "5",
+          "placements": [
+            {
+              "q": 2,
+              "r": 5,
+              "color": "white",
+              "shape": "octagon"
+            },
+            {
+              "q": 1,
+              "r": 2,
+              "color": "white",
+              "shape": "triangle"
+            }
+          ]
+        },
+        {
+          "tileId": "4t",
+          "placements": [
+            {
+              "q": 0,
+              "r": 1,
+              "color": "blue",
+              "shape": "octagon"
+            }
+          ]
+        },
+        {
+          "tileId": "2",
+          "placements": [
+            {
+              "q": 1,
+              "r": 0,
+              "color": "green",
+              "shape": "octagon"
+            },
+            {
+              "q": 1,
+              "r": 5,
+              "color": "green",
+              "shape": "triangle"
+            }
+          ]
+        },
+        {
+          "tileId": "1t",
+          "placements": [
+            {
+              "q": 0,
+              "r": 1,
+              "color": "blue",
+              "shape": "triangle"
+            }
+          ]
+        }
+      ],
+      "books": {},
+      "created_by": "Admin",
+      "soft_deleted": 0
+    }
+  ]
 }
