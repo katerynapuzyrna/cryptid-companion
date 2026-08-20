@@ -381,7 +381,7 @@ class DeductionChipsSessionMixin:
                     if not pix.isNull():
                         mb.setIconPixmap(pix)
                 mb.setStandardButtons(QMessageBox.StandardButton.NoButton)
-                no_btn = mb.addButton("No", QMessageBox.ButtonRole.NoRole)
+                mb.addButton("No", QMessageBox.ButtonRole.NoRole)
                 yes_btn = mb.addButton("Yes", QMessageBox.ButtonRole.NoRole)
                 mb.setDefaultButton(yes_btn)
                 yes_btn.setProperty("primary", True)
@@ -405,7 +405,7 @@ class DeductionChipsSessionMixin:
                 if not pix.isNull():
                     mb.setIconPixmap(pix)
             mb.setStandardButtons(QMessageBox.StandardButton.NoButton)
-            no_btn = mb.addButton("No", QMessageBox.ButtonRole.NoRole)
+            mb.addButton("No", QMessageBox.ButtonRole.NoRole)
             yes_btn = mb.addButton("Yes", QMessageBox.ButtonRole.NoRole)
             mb.setDefaultButton(yes_btn)
             yes_btn.setProperty("primary", True)

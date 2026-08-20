@@ -173,7 +173,6 @@ class DeductionSelectSimMixin:
         self._select_sim_cb_rule_p = [settings_widget.findChild(QComboBox, f"cbRuleP{i}") for i in range(1, 6)]
         self._select_sim_edt_player = [settings_widget.findChild(QLineEdit, f"edtPlayer{i}") for i in range(1, 6)]
         self._select_sim_cb_color = [settings_widget.findChild(QComboBox, f"cbColorP{i}") for i in range(1, 6)]
-        status_panel = settings_widget.findChild(QWidget, "statusPanel")
         status_list = settings_widget.findChild(QListWidget, "statusList") if settings_widget else None
         if status_list is not None:
             configure_status_list_wrapping(status_list)

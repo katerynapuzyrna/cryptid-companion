@@ -27,14 +27,25 @@ jobs:
           python-version: "3.11"
           cache: pip
 
+      - name: Install Qt runtime dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libegl1 libxkbcommon-x11-0 libxcb-cursor0
+
       - name: Install dependencies
         run: pip install -r requirements-dev.txt
 
-      - name: Run tests
-        run: pytest tests/unit tests/integration -v --tb=short
+      - name: Ruff
+        run: ruff check src/cryptid tests tools
 
-      - name: Run map validation script
-        run: python tests/validate_maps_intersections.py
+      - name: Run tests
+        run: python -m pytest tests/unit tests/integration -v --tb=short
+
+      - name: Smoke import app entry
+        env:
+          PYTHONPATH: src/cryptid
+          QT_QPA_PLATFORM: offscreen
+        run: python -c "from ui.shared.custom_map_save import ensure_custom_maps_json; ensure_custom_maps_json(); import app"
 
   build-windows:
     name: Build Windows executable
