@@ -1,0 +1,15 @@
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+exclude = ["src/cryptid/resources_rc.py"]
+
+[tool.ruff.lint]
+# Minimal, non-disruptive: pycodestyle + pyflakes, skipping noisy rules common in this codebase.
+select = ["E", "F"]
+ignore = [
+    "E402",  # imports after sys.path manipulation (app entry, tools)
+    "E501",  # line length
+    "E702",  # one-line semicolon statements (board rendering)
+    "E731",  # lambda assignments (Qt signal wiring)
+    "F401",  # unused imports (large existing surface; enable later)
+]

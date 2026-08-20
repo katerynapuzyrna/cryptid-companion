@@ -382,8 +382,6 @@ def _status_dot_pixmap(kind: _TurnStatus, diameter: int = 14) -> QPixmap:
     p.setRenderHint(QPainter.RenderHint.Antialiasing)
     blue = QColor(_STATUS_BLUE)
     green = QColor(_STATUS_GREEN)
-    r = diameter / 2.0
-    cx, cy = r, r
     if kind is _TurnStatus.ACTIVE:
         p.setPen(Qt.PenStyle.NoPen)
         p.setBrush(QBrush(blue))
